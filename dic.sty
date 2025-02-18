@@ -1,0 +1,56 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dic}
+
+\RequirePackage{fouriernc}
+\RequirePackage[bb=ams, cal=cm, scr=boondox, frak=euler]{mathalpha}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{xspace}
+
+\RequirePackage{cmdCommune}
+
+\newcommand{\sSubset}{\ensuremath{\mathscr{s}}\xspace}
+
+%------------------------------------------------------------------------------------
+%                              MATRICE DE ROTATION :
+%------------------------------------------------------------------------------------
+% Matrice de rotation globale :
+\newcommand{\matR}{\ensuremath{\mat{\mathcal{R}}}\xspace}
+
+% Matrice de rotation autour de x :
+\newcommand{\matRx}{\ensuremath{\mat{\mathcal{R}}_{x}}\xspace}
+
+% Matrice de rotation autour de y :
+\newcommand{\matRy}{\ensuremath{\mat{\mathcal{R}}_{y}}\xspace}
+
+% Matrice de rotation autour de z :
+\newcommand{\matRz}{\ensuremath{\mat{\mathcal{R}}_{z}}\xspace}
+
+% Composantes matrice de rotation x :
+\newcommand{\matriceRotationX}{\ensuremath{\begin{bmatrix}
+            1 &         0      &        0        \\
+            0 &  \cosP{\alpha} &  -\sinP{\alpha} \\
+            0 &  \sinP{\alpha} &   \cosP{\alpha} 
+\end{bmatrix}}\xspace}
+
+
+% Composantes matrice de rotation y :
+\newcommand{\matriceRotationY}{\ensuremath{\begin{bmatrix}
+            \cosP{\beta}  &  0 & \sinP{\beta} \\
+                  0       &  1 &      0       \\
+           -\sinP{\beta}  &  0 & \cosP{\beta}
+\end{bmatrix}}\xspace}
+
+% Composantes matrice de rotation z :
+\newcommand{\matriceRotationZ}{\ensuremath{\begin{bmatrix}
+            \cosP{\gamma} & -\sinP{\gamma} & 0 \\
+            \sinP{\gamma} &  \cosP{\gamma} & 0 \\
+                  0       &        0       & 1
+\end{bmatrix}}\xspace}
+
+
+%------------------------------------------------------------------------------------
+%                              TRANSLATION :
+%------------------------------------------------------------------------------------
+
+

@@ -1,0 +1,26 @@
+\NeedsTeXFormat{LaTeX2e}
+%\ProvidesPackage{cmdCommune}
+
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{ushort}
+\RequirePackage{stackengine}
+
+
+\newcommand{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
+\newcommand{\Resize}[2]{\resizebox{#1}{!}{$#2$}}%
+
+% Commande pour creer des vecteurs : 
+\newcommand{\ve}[1]{\ensuremath{\ushort{\boldsymbol{#1}}}\xspace}
+
+
+% Commandes pour creer des matrices : symboles en gras avec 
+\newcommand*{\barbI}[1]{\stackunder[1.0pt]{$#1$}{\rule{1.3ex}{0.095ex}}} 
+\newcommand*{\barbII}[1]{\barbI{\barbI{#1}}}
+\newcommand{\mat}[1]{\ensuremath{\barbII{\boldsymbol{#1}}}\xspace}
+
+% Commande pour les fonctions cos et sinus : 
+\newcommand{\cosP}[1]{\ensuremath{\cos \left( #1 \right)}\xspace}
+\newcommand{\sinP}[1]{\ensuremath{\sin \left( #1 \right)}\xspace}
+
+

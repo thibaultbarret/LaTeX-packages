@@ -1,0 +1,86 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{identifiabilite}
+
+\RequirePackage{fouriernc}
+\RequirePackage[bb=ams, cal=cm, scr=boondox, frak=euler]{mathalpha}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath}
+\RequirePackage{xspace}
+
+\RequirePackage{cmdCommune}
+
+% Jeu de parametres :
+\newcommand{\jeuParametres}{\ensuremath{\boldsymbol{\theta}}\xspace}
+
+% Composantes jeu de parametres : 
+\newcommand{\jeuParametresComp}{\ensuremath{ \bigl\{ \theta \bigr\} }\xspace}
+
+% Composantes jeu de parametres iteration : 
+\newcommand{\jeuParametresIt}[1]{\ensuremath{ \jeuParametres^{#1} }\xspace}
+\newcommand{\jeuParametresItComp}[1]{\ensuremath{ \bigl\{ \theta^{#1} \bigr\} }\xspace}
+
+% Jeux de parametres final :
+\newcommand{\jeuParametresFinal}{\ensuremath{ \hat{\jeuParametres}  }\xspace}
+\newcommand{\jeuParametresFinalComp}{\ensuremath{ \bigl\{ \hat{\theta} \bigr\} }\xspace}
+
+% Modele : 
+\newcommand{\modele}{\ensuremath{\mathscr{M}}\xspace}
+
+% Modele d'un jeu de parametres :
+\newcommand{\modeleTheta}{\ensuremath{\modele \bigl( \jeuParametres \bigr)}\xspace}
+
+\newcommand{\modeleThetaComp}{\ensuremath{\modele \bigl( \jeuParametresComp \bigr)}\xspace}
+
+% Grande somme : 
+\newcommand{\biggSum}[2]{\ensuremath{\mathop{\Scale[2.]{\sum}}_{#2}^{#1}\xspace}}
+
+% Tres grande somme : 
+\newcommand{\bigggSum}[2]{\ensuremath{\mathop{\Scale[2.5]{\sum}}_{#2}^{#1}\xspace}}
+
+% Variable observable o : 
+\newcommand{\varO}{\ensuremath{\mathscr{o}}\xspace}
+
+% Point p 
+\newcommand{\pPoint}{\ensuremath{\mathscr{p}}\xspace}
+
+% Instant i 
+\newcommand{\iInstant}{\ensuremath{\mathscr{i}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                                       Vecteur :
+%----------------------------------------------------------------------------------------
+% Vecteur observable : 
+\newcommand{\vecObsComp}[1]{\ensuremath{\bigl\{ #1 \bigr\}}\xspace}
+
+% Vecteur residus : 
+\newcommand{\vecRes}{\ensuremath{\ve{r}}\xspace}
+
+% Composantes vecteur residus  : 
+\newcommand{\vecResComp}{\ensuremath{\vecObsComp{r}}\xspace}
+
+% Vecteur residus adimensionne : 
+\newcommand{\vecResAd}{\ensuremath{\ve{\widetilde{r}}}\xspace}
+
+% Composantes vecteur residus adimensionne : 
+\newcommand{\vecResAdComp}{\ensuremath{\vecObsComp{\widetilde{r}}}\xspace}
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%                                 Vecteur experimental :
+%----------------------------------------------------------------------------------------
+\newcommand{\yExp}{\ensuremath{y_{\mathrm{exp}}}\xspace}
+\newcommand{\yExpComp}{\ensuremath{\bigl\{ \yExp \bigr\}}\xspace}
+\newcommand{\yExpClComp}{\ensuremath{\bigl\{ y_{\mathrm{exp}}^{\mathrm{cl}} \bigr\}}\xspace}
+
+
+%----------------------------------------------------------------------------------------
+%                                 Vecteur modele :
+%----------------------------------------------------------------------------------------
+\newcommand{\yNum}{\ensuremath{y_{\mathrm{num}}}\xspace}
+\newcommand{\yNumComp}{\ensuremath{\bigl\{ \yNum \bigr\}}\xspace}
+\newcommand{\yNumCompTheta}{\ensuremath{\bigl\{ \yNum \bigl( \jeuParametres \bigr)  \bigr\}}\xspace}
+\newcommand{\yNumCompThetaComp}{\ensuremath{\bigl\{ \yNum \bigl( \jeuParametresComp \bigr)  \bigr\}}\xspace}
+

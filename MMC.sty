@@ -1,0 +1,152 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{mmc}
+
+\RequirePackage{fouriernc}
+\RequirePackage[bb=ams, cal=cm, scr=boondox, frak=euler]{mathalpha}
+\RequirePackage{amsmath}
+\RequirePackage{bm}
+\RequirePackage{graphicx}
+\RequirePackage{stackengine}
+\RequirePackage{xspace}
+\RequirePackage{accents}
+\RequirePackage{ushort}
+
+\RequirePackage{cmdCommune}
+
+
+% Commande pour creer les tenseurs : 
+\stackMath
+\newcommand\st[2][1]{%
+    \def\useanchorwidth{T}%
+    \ifnum#1>1%
+        %\stackunder[-1pt]{\st[\numexpr#1-1\relax]{#2}}{\footnotesize\pmb{\sim}}%
+        \stackunder[-1pt]{\st[\numexpr#1-1\relax]{#2}}{\footnotesize{\sim}}%
+    \else%
+        \stackunder[1.5pt]{#2}{\footnotesize{\sim}}%
+    \fi%
+}
+
+
+
+% Plus grand symbole \sigma et \varepsilon :
+\newcommand{\bSig}{\ensuremath{\Scale[1.4]{\sigma}}\xspace}
+\newcommand{\bEps}{\ensuremath{\Scale[1.4]{\varepsilon}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                               VECTEURS MMC : 
+%----------------------------------------------------------------------------------------
+% Vecteur position courante : 
+\newcommand{\vecx}{\ensuremath{\ve{x}}\xspace}
+
+% Vecteur position initiale : 
+\newcommand{\vecX}{\ensuremath{\ve{X}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                                 TENSEURS ORDRE 2 MMC : 
+%----------------------------------------------------------------------------------------
+% Tenseur identite : 
+\newcommand{\stId}{\ensuremath{\st{\mathbf{I}}}\xspace}
+
+% Tenseur lagrangien d'elongations :
+\newcommand{\stU}{\ensuremath{\st{\boldsymbol{U}}}\xspace}
+
+% Tenseur eulerien d'elongations :
+\newcommand{\stV}{\ensuremath{\st{\boldsymbol{V}}}\xspace}
+
+% Tenseur de rotation :
+\newcommand{\stRot}{\ensuremath{\st{\boldsymbol{R}}}\xspace}
+
+% Tenseur de transformations :
+\newcommand{\stF}{\ensuremath{\st{\boldsymbol{F}}}\xspace}
+
+
+%----------------------------------------------------------------------------------------
+%                           TENSEUR DES CONTRAINTES : 
+%----------------------------------------------------------------------------------------
+\newcommand{\stSig}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\sigma}}}}\xspace}
+\newcommand{\stSigIncN}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\sigma}}}^{(n)}}\xspace}
+\newcommand{\stSigIncNp}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\sigma}}}^{(n+1)}}\xspace}
+
+\newcommand{\stDeltaSig}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\sigma}}}}\xspace}
+\newcommand{\stDeltaSigIncNp}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\sigma}}}^{(n+1)}}\xspace}
+
+\newcommand{\stSigComp}[1]{\ensuremath{\bSig_{#1}}\xspace}
+
+\newcommand{\stSigExpComp}[1]{\ensuremath{\bSig^{\mathrm{exp}}_{#1}}\xspace}
+\newcommand{\stSigNumComp}[1]{\ensuremath{\bSig^{\mathrm{num}}_{#1}}\xspace}
+
+% Trace du tenseur des contraintes : 
+\newcommand{\trStSig}{\ensuremath{\operatorname{tr} \bigl( \stSig \bigr)}\xspace}
+
+% Deviateur tenseur des contraintes : 
+\newcommand{\stDevSig}{\ensuremath{\st{\boldsymbol{s}}}\xspace}
+
+% Direction d'ecoulement plastique : 
+\newcommand{\stFlow}{\ensuremath{\st{\boldsymbol{n}}}\xspace}
+
+
+%----------------------------------------------------------------------------------------
+%                               TENSEUR DES DEFORMATIONS : 
+%----------------------------------------------------------------------------------------
+\newcommand{\stEps}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}}\xspace}
+\newcommand{\stEpsIncN}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{(n)}}\xspace}
+
+\newcommand{\stEpsTot}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{tot}}}\xspace}
+\newcommand{\stEpsEl}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{el}}}\xspace}
+\newcommand{\stEpsP}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{p}}}\xspace}
+
+\newcommand{\stEpsComp}[1]{\ensuremath{\bEps_{#1}}\xspace}
+
+\newcommand{\stEpsExpComp}[1]{\ensuremath{\bEps^{\mathrm{exp}}_{#1}}\xspace}
+\newcommand{\stEpsNumComp}[1]{\ensuremath{\bEps^{\mathrm{num}}_{#1}}\xspace}
+
+% Trace du tenseur des deformations :
+\newcommand{\trStEps}{\ensuremath{\operatorname{tr} \bigl( \stEps \bigr)}\xspace}
+
+% Trace du tenseur des deformations elastiques
+\newcommand{\trStEpsEl}{\ensuremath{\operatorname{tr} \bigl( \stEpsEl \bigr)}\xspace}
+
+% Trace du tenseur des deformations plastique
+\newcommand{\trStEpsP}{\ensuremath{\operatorname{tr} \bigl( \stEpsP \bigr)}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                       INCREMENT DU TENSEUR DES DEFORMATIONS
+%----------------------------------------------------------------------------------------
+\newcommand{\stDeltaEps}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}}\xspace}
+\newcommand{\stDeltaEpsTot}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{tot}}}\xspace}
+\newcommand{\stDeltaEpsEl}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{el}}}\xspace}
+\newcommand{\stDeltaEpsVp}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{vp}}}\xspace}
+\newcommand{\stDeltaEpsP}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{p}}}\xspace}
+
+\newcommand{\stDeltaEpsIncNp}{\ensuremath{\Delta\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{(n+1)}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                       TENSEUR ORDRE 4 : 
+%----------------------------------------------------------------------------------------
+% Tenseur de rigidite : 
+\newcommand{\sttC}{\ensuremath{\st[2]{\boldsymbol{C}}}\xspace}
+
+\newcommand{\sttL}{\ensuremath{\st[2]{\boldsymbol{L}}}\xspace}
+
+% Tenseur projecteur deviateur : 
+\newcommand{\sttK}{\ensuremath{\st[2]{\boldsymbol{K}}}\xspace}
+
+% Tenseur identite ordre 4 : 
+\newcommand{\sttId}{\ensuremath{\st[2]{\mathbf{I}}}\xspace}
+
+
+%----------------------------------------------------------------------------------------
+%                           LDC : 
+%----------------------------------------------------------------------------------------
+% Expression du tenseur de rigidite tangent :
+\newcommand{\dStSigdStEps}{\ensuremath{\dfrac{\partial \stDeltaSig}{\partial \stDeltaEps}}\xspace}
+\newcommand{\dStSigdStEpsIncNp}{\ensuremath{\dfrac{\partial \stDeltaSigIncNp}{\partial \stDeltaEpsIncNp}}\xspace}
+
+
+% Chargement : 
+\newcommand{\dChardx}{\ensuremath{\dfrac{\partial P }{\partial x }}\xspace}
+
+
+\newcommand{\pIncN}{\ensuremath{p^{(n)}}\xspace}
+\newcommand{\pIncNp}{\ensuremath{p^{(n + 1)}}\xspace}
+
