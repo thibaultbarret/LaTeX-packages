@@ -15,9 +15,10 @@
 
 
 % Commandes pour creer des matrices : symboles en gras avec 
-\newcommand*{\barbI}[1]{\stackunder[1.0pt]{$#1$}{\rule{1.3ex}{0.095ex}}} 
-\newcommand*{\barbII}[1]{\barbI{\barbI{#1}}}
-\newcommand{\mat}[1]{\ensuremath{\barbII{\boldsymbol{#1}}}\xspace}
+\newcommand{\barbI}[1]{\stackunder[1.0pt]{#1}{\rule{1.3ex}{0.095ex}}}
+\newcommand{\barbII}[1]{\barbI{\barbI{#1}}}
+\newcommand{\mat}[1]{\barbII{\boldsymbol{#1}}}
+%\newcommand{\matr}[1]{\ensuremath{\barbII{\boldsymbol{#1}}}\xspace}
 
 % Commande pour les fonctions cos et sinus : 
 \newcommand{\cosP}[1]{\ensuremath{\cos \left( #1 \right)}\xspace}

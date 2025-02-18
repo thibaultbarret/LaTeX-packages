@@ -6,15 +6,87 @@
 \RequirePackage{graphicx}
 \RequirePackage{amsmath}
 \RequirePackage{xspace}
+\RequirePackage{oldstyle}
+
 
 \RequirePackage{cmdCommune}
 
+% Subset
 \newcommand{\sSubset}{\ensuremath{\mathscr{s}}\xspace}
+
+% Cam 0 : 
+\newcommand{\camZeroInd}{\ensuremath{\Scale[0.65]{\mathtt{c_{\textos{0}}}}}\xspace}
+
+% Cam 1 :
+\newcommand{\camOneInd}{\ensuremath{\Scale[0.65]{\mathtt{c_{\textos{1}}}}}\xspace}
+
+% Indice retinien :  
+\newcommand{\retInd}{\ensuremath{\Scale[0.65]{\mathrm{ret}}}\xspace}
+
+% Indice image :
+\newcommand{\imgInd}{\ensuremath{\Scale[0.65]{\mathrm{img}}}\xspace}
+
+% Indice objet :
+\newcommand{\objInd}{\ensuremath{\Scale[0.65]{\mathrm{obj}}}\xspace}
+
+% Indice meilleur plan : 
+\newcommand{\mpInd}{\ensuremath{\Scale[0.65]{\mathrm{mp}}}\xspace}
+
+% Distance object camera : 
+\newcommand{\distCamObj}{\ensuremath{\mathscr{D}_{\mathsf{c} \rightarrow \mathsf{o}}}\xspace}
+
+% Fonction camera : 
+\newcommand{\fonctionCamera}{\ensuremath{\ve{\mathcal{P}}_{c}}\xspace}
+
+% Point m et M :
+\newcommand{\pointm}{\ensuremath{\ve{m}}\xspace}
+\newcommand{\pointM}{\ensuremath{\ve{M}}\xspace}
+
+% Matrice contenant 
+\newcommand{\rotEtTr}{\ensuremath{\mat{T}}\xspace}
+%------------------------------------------------------------------------------------
+%                              PARAMETRES CALIBRATION :
+%------------------------------------------------------------------------------------
+
+% Distance focale : 
+\newcommand{\fx}{\ensuremath{\mathit{f}_{\mathrm{x}}}\xspace}
+\newcommand{\fy}{\ensuremath{\mathit{f}_{\mathrm{y}}}\xspace}
+\newcommand{\fs}{\ensuremath{\mathit{f}_{\mathrm{s}}}\xspace}
+
+% Centre optique
+\newcommand{\Cx}{\ensuremath{\mathcal{C}_{\mathrm{x}}}\xspace}
+\newcommand{\Cy}{\ensuremath{\mathcal{C}_{\mathrm{y}}}\xspace}
+
+% Coefficients de distorsions :
+\newcommand{\kappaOne}{\ensuremath{\kappa_{\mathrm{1}}}\xspace}
+\newcommand{\kappaTwo}{\ensuremath{\kappa_{\mathrm{2}}}\xspace}
+\newcommand{\kappaThree}{\ensuremath{\kappa_{\mathrm{3}}}\xspace}
+
+\newcommand{\rhoD}{\ensuremath{\rho_{\mathrm{d}}}\xspace}
+
+\newcommand{\pOne}{\ensuremath{p_{\mathrm{1}}}\xspace}
+\newcommand{\pTwo}{\ensuremath{p_{\mathrm{2}}}\xspace}
+
+%------------------------------------------------------------------------------------
+%                              DIFFERENTS REPERES :
+%------------------------------------------------------------------------------------
+\newcommand{\repereRetinien}{\ensuremath{\mathscr{R}_{\retInd}}\xspace}
+
+\newcommand{\repereImage}{\ensuremath{\mathscr{R}_{\mathrm{img}}}\xspace}
+
+\newcommand{\repereObjet}{\ensuremath{\mathscr{R}_{\objInd}}\xspace}
+\newcommand{\repereObjetDic}{\ensuremath{\mathscr{R}^{\prime}_{\objInd}}\xspace}
+
+\newcommand{\repereCameraMaitre}{\ensuremath{\mathscr{R}_{\camZeroInd}}\xspace}
+\newcommand{\repereCameraEsclave}{\ensuremath{\mathscr{R}_{\camOneInd}}\xspace}
+
+\newcommand{\repereMeilleurPlan}{\ensuremath{\mathscr{R}_{\mathtt{mp}}}\xspace}
 
 %------------------------------------------------------------------------------------
 %                              MATRICE DE ROTATION :
 %------------------------------------------------------------------------------------
 % Matrice de rotation globale :
+%\newcommand{\matR}{\ensuremath{{\mathcal{R}}}\xspace}
 \newcommand{\matR}{\ensuremath{\mat{\mathcal{R}}}\xspace}
 
 % Matrice de rotation autour de x :
@@ -52,5 +124,76 @@
 %------------------------------------------------------------------------------------
 %                              TRANSLATION :
 %------------------------------------------------------------------------------------
+% Vecteur de translation :
+\newcommand{\vecTr}{\ensuremath{\ve{\mathcal{T}}}\xspace}
+
+% Composantes : 
+\newcommand{\vecTrx}{\ensuremath{\mathcal{T}_{x}}\xspace}
+\newcommand{\vecTry}{\ensuremath{\mathcal{T}_{y}}\xspace}
+\newcommand{\vecTrz}{\ensuremath{\mathcal{T}_{z}}\xspace}
+
+%------------------------------------------------------------------------------------
+%                               ORIGINE REPERE :
+%------------------------------------------------------------------------------------
+% Origine du repere de la camera 0
+\newcommand{\origineCam}{\ensuremath{\mathcal{O}_{\camZeroInd}}\xspace}
+
+\newcommand{\origineObjet}{\ensuremath{\mathcal{O}_{\objInd}}\xspace}
+\newcommand{\origineObjetPrime}{\ensuremath{\mathcal{O}^{\prime}_{\objInd}}\xspace}
+%------------------------------------------------------------------------------------
+%                               VECTEUR :
+%------------------------------------------------------------------------------------
+ % Vecteur normaux
+\newcommand{\vecX}{\ensuremath{\ve{x}}\xspace}
+\newcommand{\vecXprime}{\ensuremath{\ve{x}^{\prime}}\xspace}
+\newcommand{\vecXsecond}{\ensuremath{\ve{x}^{\prime\prime}}\xspace}
+
+\newcommand{\vecY}{\ensuremath{\ve{y}}\xspace}
+\newcommand{\vecYprime}{\ensuremath{\ve{y}^{\prime}}\xspace}
+\newcommand{\vecYsecond}{\ensuremath{\ve{y}^{\prime\prime}}\xspace}
+
+\newcommand{\vecZ}{\ensuremath{\ve{z}}\xspace}
+\newcommand{\vecZprime}{\ensuremath{\ve{z}^{\prime}}\xspace}
+\newcommand{\vecZsecond}{\ensuremath{\ve{z}^{\prime\prime}}\xspace}
+
+% Vecteur object : 
+\newcommand{\vecXobj}{\ensuremath{\ve{x}_{\objInd}}\xspace}
+\newcommand{\vecYobj}{\ensuremath{\ve{y}_{\objInd}}\xspace}
+\newcommand{\vecZobj}{\ensuremath{\ve{z}_{\objInd}}\xspace}
 
 
+% Vecteur capteur retinien : 
+\newcommand{\vecXret}{\ensuremath{\ve{x}_{\retInd}}\xspace}
+\newcommand{\vecYret}{\ensuremath{\ve{y}_{\retInd}}\xspace}
+\newcommand{\vecZret}{\ensuremath{\ve{z}_{\retInd}}\xspace}
+
+% Vecteur camera : 
+\newcommand{\vecXcam}{\ensuremath{\ve{x}_{\camZeroInd}}\xspace}
+\newcommand{\vecXcamPrime}{\ensuremath{\ve{x}^{\prime}_{\camZeroInd}}\xspace}
+
+\newcommand{\vecYcam}{\ensuremath{\ve{y}_{\camZeroInd}}\xspace}
+\newcommand{\vecYcamPrime}{\ensuremath{\ve{y}^{\prime}_{\camZeroInd}}\xspace}
+
+\newcommand{\vecZcam}{\ensuremath{\ve{z}_{\camZeroInd}}\xspace}
+\newcommand{\vecZcamPrime}{\ensuremath{\ve{z}}\xspace}
+
+% Vecteur image : 
+\newcommand{\vecUimg}{\ensuremath{\ve{u}}\xspace}
+\newcommand{\vecVimg}{\ensuremath{\ve{v}}\xspace}
+
+
+% vecteur unitaire en colonne : 
+\newcommand{\vecZunitaireColComp}{\ensuremath{\begin{Bmatrix}
+            0 \\
+            0 \\
+            1 \\
+\end{Bmatrix}}\xspace}
+
+% vecteur normal au meilleur plan :
+\newcommand{\vecNmp}{\ensuremath{\ve{n}_{\mpInd}}\xspace}
+\newcommand{\vecNmpComp}{\ensuremath{\bigl\{ n_{\mpInd} \bigr\}}\xspace}
+
+
+%------------------------------------------------------------------------------------
+% Meilleur plan :
+\newcommand{\bestPlane}{\ensuremath{\mathscr{P}_{\mpInd}}\xspace}
