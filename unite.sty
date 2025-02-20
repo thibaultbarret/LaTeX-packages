@@ -1,0 +1,10 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{unite}
+
+\RequirePackage{siunitx}
+\sisetup{locale = FR}
+
+\DeclareSIUnit\px{pixels}
+\DeclareSIUnit\image{images}
+
+\newcommand{\untMPa}[1]{\qty{#1}{\mega\pascal}}
