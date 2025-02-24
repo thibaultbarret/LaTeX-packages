@@ -14,14 +14,26 @@
 
 % Composantes jeu de parametres : 
 \newcommand{\jeuParametresComp}{\ensuremath{ \bigl\{ \theta \bigr\} }\xspace}
+\newcommand{\jeuParametresNoComp}[1]{\ensuremath{ \bigl\{ \theta \bigr\}_{#1}}\xspace}
 
 % Composantes jeu de parametres iteration : 
 \newcommand{\jeuParametresIt}[1]{\ensuremath{ \jeuParametres^{#1} }\xspace}
 \newcommand{\jeuParametresItComp}[1]{\ensuremath{ \bigl\{ \theta^{#1} \bigr\} }\xspace}
 
-% Jeux de parametres final :
+% Jeu de parametres initial :
+\newcommand{\jeuParametresInitialNoComp}[1]{\ensuremath{ \bigl\{ \theta_{\textsc{ini}} \bigr\}_{#1}}\xspace}
+
+% Jeu de parametres final :
 \newcommand{\jeuParametresFinal}{\ensuremath{ \hat{\jeuParametres}  }\xspace}
 \newcommand{\jeuParametresFinalComp}{\ensuremath{ \bigl\{ \hat{\theta} \bigr\} }\xspace}
+\newcommand{\jeuParametresFinalNoComp}[1]{\ensuremath{ \bigl\{ \hat{\theta} \bigr\}_{#1}}\xspace}
+
+
+% Fonction cout : 
+\newcommand{\ChiSquare}{\ensuremath{\chi^{2}}\xspace}
+
+% Fonction cout avec les parametres : 
+\newcommand{\ChiSquareTheta}{\ensuremath{\chi^{2} \bigl( \jeuParametres \bigr)}\xspace}
 
 % Modele : 
 \newcommand{\modele}{\ensuremath{\mathscr{M}}\xspace}

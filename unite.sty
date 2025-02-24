@@ -1,10 +1,23 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{unite}
 
+\RequirePackage{xcolor}
+\newcommand{\cd}{\color{red}}
+
 \RequirePackage{siunitx}
 \sisetup{locale = FR}
 
 \DeclareSIUnit\px{pixels}
 \DeclareSIUnit\image{images}
 
-\newcommand{\untMPa}[1]{\qty{#1}{\mega\pascal}}
+
+\newcommand{\utMPa}{\unit{\bigl[\MPa\bigr]}}
+\newcommand{\utWU}{$\bigl[\mbox{\textendash}\bigr]$}
+
+\newcommand{\qtMPa}[1]{\qty{#1}{\bigl[\mega\pascal\bigr]}}
+%\newcommand{\qtMPa}[1]{\num[group-separator = \ ]{#1}\utMPa}
+
+\newcommand{\qtSec}[1]{\qty{#1}{\second}}
+
+
+

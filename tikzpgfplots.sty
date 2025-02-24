@@ -1,10 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{tikzpgfplots}
 
-\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{svg}
+
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 \RequirePackage{graphicx}
+\RequirePackage{tikz-3dplot}
+%\RequirePackage{MMC, unite}
 
 \usetikzlibrary{intersections,
                 arrows,
@@ -32,9 +36,17 @@
 %----------------------------------------------------------------------------------------
 %                                   TIKZ STYLES : 
 %----------------------------------------------------------------------------------------
-\input{nodeStyle}
-\input{lineStyles}
+\input{TIKZlineStyles}
+\input{TIKZnodeStyles}
 
 %----------------------------------------------------------------------------------------
 %                                 PGFPLOTS STYLES : 
 %----------------------------------------------------------------------------------------
+% Command to remove 0 on axis :
+\pgfplotsset{ignore zero/.style={%
+        #1ticklabel={\ifdim\tick pt=0pt \else\pgfmathprintnumber{\tick}\fi}
+    }
+}
+
+\input{PGFchartStyles}
+\input{PGFlineStyles}
