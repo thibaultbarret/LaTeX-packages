@@ -56,3 +56,26 @@
                         anchor = south east},
         },
 }
+
+
+\pgfplotsset{PGFstyleLoadDisplacement/.style={
+        height       = 8cm,
+        width        = 17cm,
+        grid         = major,  
+        clip mode    = individual,
+        xlabel       = {Déplacement \utMm},
+        ylabel       = {Force \utKn},
+        ignore zero = y,
+        legend style = {fill            = lightgray,
+                        cells           = {anchor=west},
+                        rounded corners = 3pt,
+                        line width      = 1,
+                        inner xsep      = 3pt,
+                        inner ysep      = 3pt,
+                        nodes           = {inner sep  = 5pt,
+                                           text depth = 0.15em},
+                        font            = \normalsize,
+                        at = {(0.99, 0.01)},
+                        anchor = south east},
+        },
+}
