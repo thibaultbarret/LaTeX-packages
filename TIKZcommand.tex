@@ -1,0 +1,9 @@
+\newcommand{\centeredSubsetACS}[4]{
+    % #1 x coordinate of the subset 
+    % #2 y coordinate of the subset 
+    % #3 size of the subset
+    % #4 draw style
+    
+    \pgfmathsetmacro{\halfSize}{(#3-1)/2}
+    \draw [#4] ({#1-\halfSize}, {#2-\halfSize}) rectangle ({#1+\halfSize}, {#2+\halfSize}) ; 
+}
