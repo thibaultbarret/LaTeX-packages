@@ -6,4 +6,8 @@
     
     \pgfmathsetmacro{\halfSize}{(#3-1)/2}
     \draw [#4] ({#1-\halfSize}, {#2-\halfSize}) rectangle ({#1+\halfSize}, {#2+\halfSize}) ; 
+    \draw [#4] ({#1-2}, {#2}) -- ({#1+2}, {#2}) ; 
+    \draw [#4] ({#1}, {#2-2}) -- ({#1}, {#2+2}) ; 
 }
+
+

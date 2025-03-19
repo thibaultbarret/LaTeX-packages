@@ -2,7 +2,7 @@
 \ProvidesPackage{tikzpgfplots}
 
 \RequirePackage{xcolor}
-\RequirePackage{svg}
+%\RequirePackage{svg}
 
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
@@ -36,8 +36,9 @@
 %----------------------------------------------------------------------------------------
 %                                   TIKZ STYLES : 
 %----------------------------------------------------------------------------------------
-\input{TIKZlineStyles}
-\input{TIKZnodeStyles}
+\input{TIKZlineStyles.tex}
+\input{TIKZnodeStyles.tex}
+\input{TIKZcommand.tex}
 
 %----------------------------------------------------------------------------------------
 %                                 PGFPLOTS STYLES : 
@@ -48,5 +49,8 @@
     }
 }
 
-\input{PGFchartStyles}
-\input{PGFlineStyles}
+\input{PGFchartStyles.tex}
+\input{PGFlineStyles.tex}
+
+
+\endinput
