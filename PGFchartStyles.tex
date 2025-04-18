@@ -33,6 +33,21 @@
                         font            = \normalsize,
                         at = {(0.99, 0.01)},
                         anchor = south east},
+        x tick label style={
+            /pgf/number format/.cd,
+            fixed,
+            %           fixed zerofill,
+            %           precision=2
+        },
+        y tick label style={
+            /pgf/number format/.cd,
+            %           fixed,
+            %           fixed zerofill,
+            %           precision=2
+        },
+        /pgf/number format/.cd,
+        %       use comma,
+        1000 sep={\,},
         },
 }
 
@@ -101,4 +116,41 @@
                         at = {(0.99, 0.01)},
                         anchor = south east},
         },
+}
+
+
+\pgfplotsset{PGFstyleIdentifiabilite/.style={
+        height       = 8cm,
+        width        = 17cm,
+        grid         = major,  
+        clip mode    = individual,
+        ignore zero  = y,
+        legend style = {fill            = lightgray,
+                        cells           = {anchor=west},
+                        rounded corners = 3pt,
+                        line width      = 1,
+                        inner xsep      = 3pt,
+                        inner ysep      = 3pt,
+                        nodes           = {inner sep  = 5pt,
+                                           text depth = 0.15em},
+                        font            = \normalsize,
+                        at = {(0.99, 0.01)},
+                        anchor = south east},
+        x tick label style={
+            /pgf/number format/.cd,
+            fixed,
+            %%           fixed zerofill,
+            %%           precision=2
+        },
+        y tick label style={
+            /pgf/number format/.cd,
+            fixed,
+            %%           fixed zerofill,
+           %precision=2,
+            1000 sep={\,},
+        },
+        scaled y ticks=false
+        %/pgf/number format/.cd,
+        %       use comma,
+    }
 }

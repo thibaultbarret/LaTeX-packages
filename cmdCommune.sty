@@ -2,9 +2,24 @@
 %\ProvidesPackage{cmdCommune}
 
 \RequirePackage{graphicx}
-\RequirePackage{amsmath}
 \RequirePackage{ushort}
 \RequirePackage{stackengine}
+\RequirePackage{scalerel}
+
+%\newcommand{\paren}[1]{\mathopen{}\left( {#1}_{{}_{}}\,\negthickspace\right)\mathclose{}}
+%\usepackage{mleftright}
+
+
+%\global\delimitershortfall=5.5pt
+%\global\delimiterfactor=880
+%\renewcommand*{\left}{\mleft}
+%\renewcommand*{\right}{\mright}
+%\newcommand{\braced}[1]
+    %{ \left( #1 \right)
+        %\mskip-1.5mu \vphantom{ \mathop{
+           %\raisebox{3pt}{ \(\left(\displaystyle #1 \right)\) } } }
+    %}
+
 
 
 \newcommand{\Scale}[2][4]{\scalebox{#1}{$#2$}}%
@@ -25,3 +40,4 @@
 \newcommand{\sinP}[1]{\ensuremath{\sin \left( #1 \right)}\xspace}
 
 
+\newcommand{\dpar}[2]{\ensuremath{\dfrac{\partial #1}{\partial #2} }\xspace}

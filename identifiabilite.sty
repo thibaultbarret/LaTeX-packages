@@ -2,31 +2,42 @@
 \ProvidesPackage{identifiabilite}
 
 \RequirePackage{fouriernc}
-\RequirePackage[bb=ams, cal=cm, scr=boondox, frak=euler]{mathalpha}
-\RequirePackage{graphicx}
 \RequirePackage{amsmath}
+\RequirePackage[bb=fourier, cal=cm, scr=boondox, frak=euler]{mathalpha}
+\RequirePackage{graphicx}
 \RequirePackage{xspace}
 
 \RequirePackage{cmdCommune}
 
+\newcommand{\espaceParametres}{\ensuremath{\boldsymbol{\Theta}}\xspace}
+\newcommand{\nbParametres}{\ensuremath{N_{\theta}}\xspace}
+
 % Jeu de parametres :
-\newcommand{\jeuParametres}{\ensuremath{\boldsymbol{\theta}}\xspace}
+\newcommand{\jeuParametres}{\ensuremath{\ve{\theta}}\xspace}
+
+\newcommand{\thetaInd}[1]{\ensuremath{\theta_{#1}}\xspace}
+\newcommand{\thetaIndNumb}[1]{\ensuremath{\theta_{\Scale[0.6]{#1}}}\xspace}
+
+\newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{n}, \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
+\newcommand{\jeuParametresCompExplPert}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{n} \times (1 + \epsilon), \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
+
+%\newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{j}, \: ..., \theta_{\Scale[0.65]{1}}, \bigr\}}\xspace}
 
 % Composantes jeu de parametres : 
 \newcommand{\jeuParametresComp}{\ensuremath{ \bigl\{ \theta \bigr\} }\xspace}
-\newcommand{\jeuParametresNoComp}[1]{\ensuremath{ \bigl\{ \theta \bigr\}_{#1}}\xspace}
+\newcommand{\jeuParametresNoComp}[1]{\ensuremath{ \bigl\{ \theta \bigr\}_{\Scale[0.6]{#1}}}\xspace}
 
 % Composantes jeu de parametres iteration : 
 \newcommand{\jeuParametresIt}[1]{\ensuremath{ \jeuParametres^{#1} }\xspace}
 \newcommand{\jeuParametresItComp}[1]{\ensuremath{ \bigl\{ \theta^{#1} \bigr\} }\xspace}
 
 % Jeu de parametres initial :
-\newcommand{\jeuParametresInitialNoComp}[1]{\ensuremath{ \bigl\{ \theta_{\textsc{ini}} \bigr\}_{#1}}\xspace}
+\newcommand{\jeuParametresInitialNoComp}[1]{\ensuremath{ \bigl\{ \theta_{\Scale[0.6]{\textsc{ini}}} \bigr\}_{\Scale[0.6]{#1}}}\xspace}
 
 % Jeu de parametres final :
 \newcommand{\jeuParametresFinal}{\ensuremath{ \hat{\jeuParametres}  }\xspace}
 \newcommand{\jeuParametresFinalComp}{\ensuremath{ \bigl\{ \hat{\theta} \bigr\} }\xspace}
-\newcommand{\jeuParametresFinalNoComp}[1]{\ensuremath{ \bigl\{ \hat{\theta} \bigr\}_{#1}}\xspace}
+\newcommand{\jeuParametresFinalNoComp}[1]{\ensuremath{ \bigl\{ \hat{\theta} \bigr\}_{\Scale[0.6]{#1}}}\xspace}
 
 
 % Fonction cout : 
@@ -50,13 +61,21 @@
 \newcommand{\bigggSum}[2]{\ensuremath{\mathop{\Scale[2.5]{\sum}}_{#2}^{#1}\xspace}}
 
 % Variable observable o : 
-\newcommand{\varO}{\ensuremath{\mathscr{o}}\xspace}
+\newcommand{\oVar}{\ensuremath{\mathscr{o}}\xspace}
 
 % Point p 
 \newcommand{\pPoint}{\ensuremath{\mathscr{p}}\xspace}
 
 % Instant i 
 \newcommand{\iInstant}{\ensuremath{\mathscr{i}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                                       Indices :
+%----------------------------------------------------------------------------------------
+\newcommand{\expInd}{\ensuremath{\Scale[0.65]{\mathrm{exp}}}\xspace}
+\newcommand{\numInd}{\ensuremath{\Scale[0.65]{\mathrm{num}}}\xspace}
+\newcommand{\msrInd}{\ensuremath{\Scale[0.65]{\mathrm{msr}}}\xspace}
+
 
 %----------------------------------------------------------------------------------------
 %                                       Vecteur :
@@ -71,28 +90,71 @@
 \newcommand{\vecResComp}{\ensuremath{\vecObsComp{r}}\xspace}
 
 % Vecteur residus adimensionne : 
-\newcommand{\vecResAd}{\ensuremath{\ve{\widetilde{r}}}\xspace}
+\newcommand{\vecResAd}{\ensuremath{\ve{\overline{r}}}\xspace}
 
 % Composantes vecteur residus adimensionne : 
-\newcommand{\vecResAdComp}{\ensuremath{\vecObsComp{\widetilde{r}}}\xspace}
-
-
+\newcommand{\vecResAdComp}{\ensuremath{\vecObsComp{\overline{r}}}\xspace}
 
 
 
 %----------------------------------------------------------------------------------------
 %                                 Vecteur experimental :
 %----------------------------------------------------------------------------------------
-\newcommand{\yExp}{\ensuremath{y_{\mathrm{exp}}}\xspace}
-\newcommand{\yExpComp}{\ensuremath{\bigl\{ \yExp \bigr\}}\xspace}
-\newcommand{\yExpClComp}{\ensuremath{\bigl\{ y_{\mathrm{exp}}^{\mathrm{cl}} \bigr\}}\xspace}
+
+\newcommand{\vecYexp}{\ensuremath{\boldsymbol{y}_{\expInd}}\xspace}
+
+\newcommand{\vecYexpComp}{\ensuremath{\bigl\{ y_{\expInd} \bigr\}}\xspace}
+
+\newcommand{\vecYexpClComp}{\ensuremath{\bigl\{ y_{\expInd}^{\mathrm{cl}} \bigr\}}\xspace}
+
+
+
+%\newcommand{\yExpCompC}{\ensuremath{\bigl\{ y_{\mathrm{exp}} \bigr\}}\xspace}
+%\newcommand{\yExpClCompC}{\ensuremath{\bigl\{ y_{\mathrm{exp}}^{\mathrm{cl}} \bigr\}}\xspace}
 
 
 %----------------------------------------------------------------------------------------
 %                                 Vecteur modele :
 %----------------------------------------------------------------------------------------
+
 \newcommand{\yNum}{\ensuremath{y_{\mathrm{num}}}\xspace}
+\newcommand{\vecYnum}{\ensuremath{\boldsymbol{y}_{\numInd}}\xspace}
+
+\newcommand{\vecYnumComp}{\ensuremath{\bigl\{ y_{\numInd}  \bigr\}}\xspace}
+\newcommand{\vecYnumCompTheta}{\ensuremath{\bigl\{ y_{\numInd} \bigl( \jeuParametres \bigr) \bigr\}}\xspace}
+
+\newcommand{\vecYnumCompVar}[1]{\ensuremath{\bigl\{ y_{\numInd} \bigl( #1 \bigr) \bigr\}}\xspace}
+
+%\newcommand{\vecYnumCompTheta}{\ensuremath{y_{\numInd}}\xspace}
+
 \newcommand{\yNumComp}{\ensuremath{\bigl\{ \yNum \bigr\}}\xspace}
 \newcommand{\yNumCompTheta}{\ensuremath{\bigl\{ \yNum \bigl( \jeuParametres \bigr)  \bigr\}}\xspace}
 \newcommand{\yNumCompThetaComp}{\ensuremath{\bigl\{ \yNum \bigl( \jeuParametresComp \bigr)  \bigr\}}\xspace}
+
+
+%----------------------------------------------------------------------------------------
+%                               Identification inverse :
+%----------------------------------------------------------------------------------------
+\newcommand{\matJacobienResidus}{\ensuremath{\boldsymbol{J}_{\vecRes}}\xspace}
+\newcommand{\matJacobienResidusComp}{\ensuremath{\bigl[ J_{\vecRes} \bigr]}\xspace}
+
+
+%----------------------------------------------------------------------------------------
+%                               Identifiabilite :
+%----------------------------------------------------------------------------------------
+% Derivative of a signal with respect of θⱼ : ∂/∂θⱼ
+\newcommand{\dSignaldThethaJ}[1]{\ensuremath{\dpar{#1}{\thetaInd{j}}}\xspace}
+
+% Scaled derivative of a signal with respect of θⱼ : θⱼ x  ∂/∂θⱼ
+\newcommand{\scdSignaldThethaJ}[1]{\ensuremath{\thetaInd{j} \times \dpar{#1}{\thetaInd{j}}}\xspace}
+
+\newcommand{\sensibilitySignalThethaJScaledByMax}[1]{\ensuremath{\dfrac{\thetaInd{j}}{\max #1} \times \dpar{#1}{\thetaInd{j}}}\xspace}
+
+% Sensitivity matrix : 
+\newcommand{\matSensitivity}{\ensuremath{\mat{S}}\xspace}
+\newcommand{\matSensitivityComp}{\ensuremath{\bigl[ S \bigr]}\xspace}
+
+% Measure of sensitivity : 
+\newcommand{\deltaMeasure}{\ensuremath{\delta^{\msrInd}_{j}}\xspace}
+
 

@@ -2,9 +2,9 @@
 \ProvidesPackage{dic}
 
 \RequirePackage{fouriernc}
-\RequirePackage[bb=ams, cal=cm, scr=boondox, frak=euler]{mathalpha}
-\RequirePackage{graphicx}
 \RequirePackage{amsmath}
+\RequirePackage[bb=fourier, cal=cm, scr=boondox, frak=euler]{mathalpha}
+\RequirePackage{graphicx}
 \RequirePackage{xspace}
 \RequirePackage{oldstyle}
 
@@ -15,10 +15,10 @@
 \newcommand{\sSubset}{\ensuremath{\mathscr{s}}\xspace}
 
 % Cam 0 : 
-\newcommand{\camZeroInd}{\ensuremath{\Scale[0.65]{\mathtt{c_{\textos{0}}}}}\xspace}
+\newcommand{\camZeroInd}{\ensuremath{\Scale[0.65]{\mathrm{c_{\textos{0}}}}}\xspace}
 
 % Cam 1 :
-\newcommand{\camOneInd}{\ensuremath{\Scale[0.65]{\mathtt{c_{\textos{1}}}}}\xspace}
+\newcommand{\camOneInd}{\ensuremath{\Scale[0.65]{\mathrm{c_{\textos{1}}}}}\xspace}
 
 % Indice retinien :  
 \newcommand{\retInd}{\ensuremath{\Scale[0.65]{\mathrm{ret}}}\xspace}
@@ -86,7 +86,7 @@
 \newcommand{\repereCameraMaitre}{\ensuremath{\mathscr{R}_{\camZeroInd}}\xspace}
 \newcommand{\repereCameraEsclave}{\ensuremath{\mathscr{R}_{\camOneInd}}\xspace}
 
-\newcommand{\repereMeilleurPlan}{\ensuremath{\mathscr{R}_{\mathtt{mp}}}\xspace}
+\newcommand{\repereMeilleurPlan}{\ensuremath{\mathscr{R}_{\mpInd}}\xspace}
 
 %------------------------------------------------------------------------------------
 %                              MATRICE DE ROTATION :
