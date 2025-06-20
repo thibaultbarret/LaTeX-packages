@@ -21,7 +21,7 @@
         grid         = major,  
         clip mode    = individual,
         xlabel       = {$p$ \utWU},
-        ylabel       = {\sigmaVM \utMPa},
+        ylabel       = {\sigmaR \utMPa},
         legend style = {fill            = lightgray,
                         cells           = {anchor=west},
                         rounded corners = 3pt,
@@ -152,5 +152,29 @@
         scaled y ticks=false
         %/pgf/number format/.cd,
         %       use comma,
+    }
+}
+
+
+\pgfplotsset{PGFimage/.style={
+        height = 9cm,
+        width = 9cm,
+        enlargelimits = false,
+        unit vector ratio* = 1 1 1,
+        y dir = reverse,
+        axis x line=top,
+        axis y line=left,
+        axis on top,
+        tick style={color = red,
+        line cap = round},
+        inner axis line style={line cap = round, red},
+            %axis lines=center,
+        axis line style={line cap = round,
+            arrows = {-Triangle[width=4pt, length=7pt]},
+            line width = 0.7,
+            red,
+        },
+        xlabel = {\vecUimg [Px]},
+        ylabel = {\vecVimg [Px]},
     }
 }

@@ -1,13 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{unite}
 
-\RequirePackage{xcolor}
+\RequirePackage{cmdCommune, xcolor}
+
 \newcommand{\cd}{\color{red}}
 
 \RequirePackage{siunitx}
 \sisetup{locale = FR}
 
-\DeclareSIUnit\px{pixels}
+\DeclareSIUnit[mode=text]{\pixel}{Px}
 \DeclareSIUnit\image{images}
 
 
@@ -21,6 +22,10 @@
 
 \newcommand{\utSec}{\unit{\bigl[\second\bigr]}}
 
+\newcommand{\utPx}{\unit{\bigl[\pixel\bigr]}}
+\newcommand{\utPxPx}{\unit{\bigl[\pixel^2\bigr]}}
+
+
 
 \newcommand{\qtMPa}[1]{\qty{#1}{\bigl[\mega\pascal\bigr]}}
 
@@ -29,5 +34,7 @@
 \newcommand{\qtMm}[1]{\qty{#1}{\bigl[\mili\meter\bigr]}}
 
 \newcommand{\qtKn}[1]{\qty{#1}{\bigl[\kilo\newton\bigr]}}
+
+\newcommand{\qtPx}[1]{\qty{#1}{\bigl[\pixel\bigr]}}
 
 

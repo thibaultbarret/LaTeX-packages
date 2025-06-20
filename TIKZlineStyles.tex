@@ -9,8 +9,17 @@
 
 \tikzset{lsFlecheRepere/.append style = {
         line width = 1,
-        {-Stealth[inset=0pt, angle=30:10pt]},
-        rounded corners,
+        -Cone2,
+        shorten >=7pt,
+        line cap = round, 
+        line join = round,
+    }
+}
+
+\tikzset{lsFlecheRepereInversee/.append style = {
+        line width = 1,
+        Cone2-,
+        shorten >=7pt,
         line cap = round, 
         line join = round,
     }
@@ -26,16 +35,32 @@
 \tikzset{lsFlecheTransformation/.append style={
         line cap = round,
         line width = .5,
-        {-Stealth[inset = 0.pt, angle=40:8pt]}
+        {-Stealth[inset = 0.pt, bend, angle=40:8pt]}
     }
 }
 
 \tikzset{lsFlecheRotation/.append style = {
         line width = 0.8,
-        {-Stealth[bend, inset=2pt, length=6pt, angle'=45]},
+        arrows = {-Stealth[bend, inset=2pt, length=6pt, angle'=45]},
         rounded corners,
         line cap = round, 
         line join = round,
     }
 }
 
+\tikzset{lsFlecheRotationInversee/.append style = {
+        line width = 0.8,
+        arrows = {Stealth[bend, inset=2pt, length=6pt, angle'=45]-},
+        rounded corners,
+        line cap = round, 
+        line join = round,
+    }
+}
+
+\tikzset{lsFlecheRepere2D/.append style = {
+    line cap = round, 
+    line join = round, 
+    line width = 1, 
+    arrows = {-Triangle[width=4pt, length=9pt]},
+    }
+}

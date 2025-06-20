@@ -3,8 +3,9 @@
 
 \RequirePackage{cmdCommune}
 
-\newcommand{\feInd}{\ensuremath{\Scale[0.6]{\textsc{ef}}}\xspace}
-
+%------------------------------------------------------------------------------------
+%-------------------------------------------FE---------------------------------------
+%------------------------------------------------------------------------------------
 % Vecteur :
 \newcommand{\vecXfe}{\ensuremath{\ve{x}_{\feInd}}\xspace}
 \newcommand{\vecYfe}{\ensuremath{\ve{y}_{\feInd}}\xspace}
@@ -15,4 +16,40 @@
 
 % Repere :
 \newcommand{\repereFe}{\ensuremath{\mathscr{R}_{\feInd}}\xspace}
+
+\newcommand{\baseFe}{\ensuremath{\base{\feInd}}\xspace}
+
+
+\newcommand{\nNoeud}{\ensuremath{\mathbb{n}}\xspace}
+\newcommand{\eElement}{\ensuremath{\mathbb{elt}}\xspace}
+%------------------------------------------------------------------------------------
+%----------------------------------------FE CIN--------------------------------------
+%------------------------------------------------------------------------------------
+% Vecteurs :
+\newcommand{\vecXfeCin}{\ensuremath{\ve{x}_{\feCinInd}}\xspace}
+\newcommand{\vecYfeCin}{\ensuremath{\ve{y}_{\feCinInd}}\xspace}
+\newcommand{\vecZfeCin}{\ensuremath{\ve{z}_{\feCinInd}}\xspace}
+
+% Origine :
+\newcommand{\origineFeCin}{\ensuremath{\mathcal{O}_{\feCinInd}}\xspace}
+
+% Repere :
+\newcommand{\repereFeCin}{\ensuremath{\mathscr{R}_{\feCinInd}}\xspace}
+
+% Base : 
+\newcommand{\baseFeCin}{\ensuremath{\base{\feCinInd}}\xspace}
+
+\newcommand{\matPassFeFeCin}{\ensuremath{\matPassDet{\baseFe}{\baseFeCin}}\xspace}
+
+\newcommand{\matPassFeObj}{\ensuremath{\matPassDet{\baseFe}{\base{\objInd}}}\xspace}
+
+
+% Vecteur position des noeuds :
+\newcommand{\vecPosNef}{\ensuremath{\ve{\mathbf{X}}_{\nNoeud}}\xspace}
+
+% Deplacement EF
+\newcommand{\vecUef}{\ensuremath{\ve{\pmb{\mathbb{U}}}}\xspace}
+
+% Force : 
+\newcommand{\vecFef}{\ensuremath{\ve{\pmb{\mathbb{F}}}}\xspace}
 

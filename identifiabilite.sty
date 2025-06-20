@@ -1,13 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{identifiabilite}
 
-\RequirePackage{fouriernc}
-\RequirePackage{amsmath}
-\RequirePackage[bb=fourier, cal=cm, scr=boondox, frak=euler]{mathalpha}
-\RequirePackage{graphicx}
-\RequirePackage{xspace}
-
 \RequirePackage{cmdCommune}
+
+% Donnees : 
+%\newcommand{\donneesD}{\ensuremath{\ve{\mathcal{D}}}\xspace}
+\newcommand{\donneesD}{\ensuremath{\ve{\mathscr{x}}}\xspace}
+
+% Solution : 
+\newcommand{\solutionY}{\ensuremath{\ve{\mathscr{y}}}\xspace}
 
 \newcommand{\espaceParametres}{\ensuremath{\boldsymbol{\Theta}}\xspace}
 \newcommand{\nbParametres}{\ensuremath{N_{\theta}}\xspace}
@@ -15,11 +16,14 @@
 % Jeu de parametres :
 \newcommand{\jeuParametres}{\ensuremath{\ve{\theta}}\xspace}
 
+\newcommand{\jeuParametresAd}{\ensuremath{\ve{\theta}}\xspace}
+
 \newcommand{\thetaInd}[1]{\ensuremath{\theta_{#1}}\xspace}
+\newcommand{\thetaIndAd}[1]{\ensuremath{\overline{\theta}_{#1}}\xspace}
 \newcommand{\thetaIndNumb}[1]{\ensuremath{\theta_{\Scale[0.6]{#1}}}\xspace}
 
 \newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{n}, \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
-\newcommand{\jeuParametresCompExplPert}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{n} \times (1 + \epsilon), \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
+\newcommand{\jeuParametresCompExplPert}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaIndNumb{2}, \: ...,  \: \thetaInd{n} \times (1 + \epsilon), \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
 
 %\newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{j}, \: ..., \theta_{\Scale[0.65]{1}}, \bigr\}}\xspace}
 
@@ -41,18 +45,23 @@
 
 
 % Fonction cout : 
-\newcommand{\ChiSquare}{\ensuremath{\chi^{2}}\xspace}
+%\newcommand{\ChiSquare}{\ensuremath{\chi^{2}}\xspace}
+\newcommand{\ChiSquare}{\ensuremath{\chi}\xspace}
 
 % Fonction cout avec les parametres : 
-\newcommand{\ChiSquareTheta}{\ensuremath{\chi^{2} \bigl( \jeuParametres \bigr)}\xspace}
+%\newcommand{\ChiSquareTheta}{\ensuremath{\chi^{2} \bigl( \jeuParametres \bigr)}\xspace}
+\newcommand{\ChiSquareTheta}{\ensuremath{\chi \bigl( \jeuParametres \bigr)}\xspace}
 
 % Modele : 
-\newcommand{\modele}{\ensuremath{\mathscr{M}}\xspace}
+\newcommand{\modele}{\ensuremath{\boldsymbol{\mathscr{M}}}\xspace}
 
 % Modele d'un jeu de parametres :
 \newcommand{\modeleTheta}{\ensuremath{\modele \bigl( \jeuParametres \bigr)}\xspace}
 
 \newcommand{\modeleThetaComp}{\ensuremath{\modele \bigl( \jeuParametresComp \bigr)}\xspace}
+
+% Moyenne somme : 
+\newcommand{\bigSum}[2]{\ensuremath{\mathop{\Scale[1.5]{\sum}}_{#2}^{#1}\xspace}}
 
 % Grande somme : 
 \newcommand{\biggSum}[2]{\ensuremath{\mathop{\Scale[2.]{\sum}}_{#2}^{#1}\xspace}}
@@ -62,6 +71,7 @@
 
 % Variable observable o : 
 \newcommand{\oVar}{\ensuremath{\mathscr{o}}\xspace}
+\newcommand{\oVarInd}[1]{\ensuremath{\mathscr{o}_{#1}}\xspace}
 
 % Point p 
 \newcommand{\pPoint}{\ensuremath{\mathscr{p}}\xspace}
@@ -69,13 +79,9 @@
 % Instant i 
 \newcommand{\iInstant}{\ensuremath{\mathscr{i}}\xspace}
 
-%----------------------------------------------------------------------------------------
-%                                       Indices :
-%----------------------------------------------------------------------------------------
-\newcommand{\expInd}{\ensuremath{\Scale[0.65]{\mathrm{exp}}}\xspace}
-\newcommand{\numInd}{\ensuremath{\Scale[0.65]{\mathrm{num}}}\xspace}
-\newcommand{\msrInd}{\ensuremath{\Scale[0.65]{\mathrm{msr}}}\xspace}
+\newcommand{\NnbInstant}{\ensuremath{N_{\iInstant}}\xspace}
 
+\newcommand{\nbPtVar}{\ensuremath{N_{\!\pPoint}^{\oVar}}\xspace}
 
 %----------------------------------------------------------------------------------------
 %                                       Vecteur :
@@ -96,14 +102,16 @@
 \newcommand{\vecResAdComp}{\ensuremath{\vecObsComp{\overline{r}}}\xspace}
 
 
-
 %----------------------------------------------------------------------------------------
 %                                 Vecteur experimental :
 %----------------------------------------------------------------------------------------
+%\newcommand{\vecYexp}{\ensuremath{\boldsymbol{y}_{\expInd}}\xspace}
+\newcommand{\vecYexp}{\ensuremath{\ve{\mathscr{y}}_{\expInd}}\xspace}
+\newcommand{\vecYexpAd}{\ensuremath{\ve{\overline{\mathscr{y}}}_{\expInd}}\xspace}
 
-\newcommand{\vecYexp}{\ensuremath{\boldsymbol{y}_{\expInd}}\xspace}
+\newcommand{\vecYexpComp}{\ensuremath{\bigl\{ \ve{\mathscr{y}}_{\expInd} \bigr\}}\xspace}
 
-\newcommand{\vecYexpComp}{\ensuremath{\bigl\{ y_{\expInd} \bigr\}}\xspace}
+\newcommand{\vecYexpAdComp}{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\expInd}  \bigr\}}\xspace}
 
 \newcommand{\vecYexpClComp}{\ensuremath{\bigl\{ y_{\expInd}^{\mathrm{cl}} \bigr\}}\xspace}
 
@@ -117,13 +125,18 @@
 %                                 Vecteur modele :
 %----------------------------------------------------------------------------------------
 
-\newcommand{\yNum}{\ensuremath{y_{\mathrm{num}}}\xspace}
-\newcommand{\vecYnum}{\ensuremath{\boldsymbol{y}_{\numInd}}\xspace}
+\newcommand{\yNum}{\ensuremath{\mathscr{y}_{\mathrm{num}}}\xspace}
+\newcommand{\vecYnum}{\ensuremath{\ve{\mathscr{y}}_{\numInd}}\xspace}
 
-\newcommand{\vecYnumComp}{\ensuremath{\bigl\{ y_{\numInd}  \bigr\}}\xspace}
-\newcommand{\vecYnumCompTheta}{\ensuremath{\bigl\{ y_{\numInd} \bigl( \jeuParametres \bigr) \bigr\}}\xspace}
+\newcommand{\vecYnumAd}{\ensuremath{\ve{\overline{\mathscr{y}}}_{\numInd}}\xspace}
 
-\newcommand{\vecYnumCompVar}[1]{\ensuremath{\bigl\{ y_{\numInd} \bigl( #1 \bigr) \bigr\}}\xspace}
+\newcommand{\vecYnumComp}{\ensuremath{\bigl\{ \ve{\mathscr{y}}_{\numInd}  \bigr\}}\xspace}
+\newcommand{\vecYnumAdComp}{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\numInd}  \bigr\}}\xspace}
+\newcommand{\vecYnumCompTheta}{\ensuremath{\bigl\{ \ve{\mathscr{y}}_{\numInd} \bigl( \jeuParametres \bigr) \bigr\}}\xspace}
+
+\newcommand{\vecYnumAdCompTheta}{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\numInd} \bigl( \jeuParametres \bigr) \bigr\}}\xspace}
+
+\newcommand{\vecYnumCompVar}[1]{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\numInd} \bigl( #1 \bigr) \bigr\}}\xspace}
 
 %\newcommand{\vecYnumCompTheta}{\ensuremath{y_{\numInd}}\xspace}
 
@@ -138,6 +151,11 @@
 \newcommand{\matJacobienResidus}{\ensuremath{\boldsymbol{J}_{\vecRes}}\xspace}
 \newcommand{\matJacobienResidusComp}{\ensuremath{\bigl[ J_{\vecRes} \bigr]}\xspace}
 
+\newcommand{\matJacobienChiSquare}{\ensuremath{\mat{J}_{\ChiSquare}}\xspace}
+
+\newcommand{\vecGradientChiSquare}{\ensuremath{\ve{g}_{\ChiSquare}}\xspace}
+
+\newcommand{\matHessianChiSquare}{\ensuremath{\mat{H}_{\ChiSquare}}\xspace}
 
 %----------------------------------------------------------------------------------------
 %                               Identifiabilite :
@@ -145,16 +163,30 @@
 % Derivative of a signal with respect of θⱼ : ∂/∂θⱼ
 \newcommand{\dSignaldThethaJ}[1]{\ensuremath{\dpar{#1}{\thetaInd{j}}}\xspace}
 
-% Scaled derivative of a signal with respect of θⱼ : θⱼ x  ∂/∂θⱼ
+% Scaled derivative of a signal with respect of θⱼ : θⱼ x ∂/∂θⱼ
 \newcommand{\scdSignaldThethaJ}[1]{\ensuremath{\thetaInd{j} \times \dpar{#1}{\thetaInd{j}}}\xspace}
 
 \newcommand{\sensibilitySignalThethaJScaledByMax}[1]{\ensuremath{\dfrac{\thetaInd{j}}{\max #1} \times \dpar{#1}{\thetaInd{j}}}\xspace}
 
 % Sensitivity matrix : 
-\newcommand{\matSensitivity}{\ensuremath{\mat{S}}\xspace}
-\newcommand{\matSensitivityComp}{\ensuremath{\bigl[ S \bigr]}\xspace}
+\newcommand{\matSensitivity}{\ensuremath{\mat{\overline{S}}}\xspace}
+
+\newcommand{\matSensitivityInd}[1]{\ensuremath{\mat{\overline{S}}_{#1}}\xspace}
+
+\newcommand{\vecSensitivity}{\ensuremath{\ve{\overline{s}}}\xspace}
+
+\newcommand{\vecSensitivityVarOparamN}{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{n}}}\xspace}
+\newcommand{\vecSensitivityVarOparamJ}{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{j}}}\xspace}
+
+\newcommand{\vecSensitivityVarOparam}[1]{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{#1}}}\xspace}
+
+\newcommand{\matGsensibility}{\ensuremath{\mat{\overline{G}}}\xspace}
+
 
 % Measure of sensitivity : 
 \newcommand{\deltaMeasure}{\ensuremath{\delta^{\msrInd}_{j}}\xspace}
+\newcommand{\deltaMeasureThetaInd}[1]{\ensuremath{\delta^{\msrInd}_{\thetaInd{#1}}}\xspace}
 
+\newcommand{\indiceIdent}{\ensuremath{\mathcal{I}}\xspace}
 
+\endinput

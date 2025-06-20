@@ -1,13 +1,14 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{tikzpgfplots}
 
+\RequirePackage{cmdCommune}
 \RequirePackage[dvipsnames,svgnames,x11names, table]{xcolor}
 %\RequirePackage{svg}
 
 \RequirePackage{tikz}
+\RequirePackage{tkz-euclide}
 \RequirePackage{pgfplots}
 \usepgfplotslibrary{groupplots, fillbetween}
-\RequirePackage{graphicx}
 \RequirePackage{tikz-3dplot}
 %\RequirePackage{MMC, unite}
 
@@ -31,6 +32,7 @@
                 shadows,
                 bending,
                 shapes,
+                matrix,
 }
 
 \pgfplotsset{compat = 1.18}
@@ -42,6 +44,8 @@
 \input{TIKZlineStyles.tex}
 \input{TIKZnodeStyles.tex}
 \input{TIKZcommand.tex}
+\input{TIKZthreeDimensionsArrow.tex}
+\input{TIKZdashed.tex}
 
 %----------------------------------------------------------------------------------------
 %                                 PGFPLOTS STYLES : 

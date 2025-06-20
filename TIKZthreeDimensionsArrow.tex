@@ -1,0 +1,177 @@
+
+\makeatletter
+
+\pgfkeys{
+    /pgf/arrow keys/.cd,
+    pitch/.code={%
+        \pgfmathsetmacro\pgfarrowpitch{#1}
+        \pgfmathsetmacro\pgfarrowcospitch{abs(cos(\pgfarrowpitch))}
+        \pgfmathsetmacro\pgfarrowsinpitch{    sin(\pgfarrowpitch)}
+    }
+}
+
+\pgfdeclarearrow{
+    name = Cone1,
+    defaults = {       % inherit from Kite
+        length     = +3.6pt +5.4,
+        width'     = +0pt +0.5,
+        line width = +0pt 1 1,
+        pitch      = +0, % lie on screen
+    },
+    cache = false,     % no need cache
+    setup code = {},   % so no need setup
+    drawing code = {   % but still need math
+    % draw the base
+        \pgfmathsetmacro\pgfarrowhalfwidth{.5\pgfarrowwidth}
+        \pgfmathsetmacro\pgfarrowhalfwidthsin{\pgfarrowhalfwidth*abs(\pgfarrowsinpitch)}
+        \pgfpathellipse{\pgfpointorigin}{\pgfqpoint{\pgfarrowhalfwidthsin pt}{0pt}}{\pgfqpoint{0pt}{\pgfarrowhalfwidth pt}}
+        \pgfusepath{fill}
+    % test if the cone part visible
+        \pgfmathsetmacro\pgfarrowlengthcos{\pgfarrowlength*\pgfarrowcospitch}
+        \ifdim\pgfarrowlengthcos pt>\pgfarrowhalfwidthsin pt
+      % it is visible, so draw
+            \pgfmathsetmacro\pgfarrowlengthtemp{\pgfarrowhalfwidthsin*\pgfarrowhalfwidthsin/\pgfarrowlengthcos}
+            \pgfmathsetmacro\pgfarrowwidthtemp{\pgfarrowhalfwidth/\pgfarrowlengthcos*sqrt(\pgfarrowlengthcos*\pgfarrowlengthcos-\pgfarrowhalfwidthsin*\pgfarrowhalfwidthsin)}
+            \pgfpathmoveto{\pgfqpoint{\pgfarrowlengthcos pt}{0pt}}
+            \pgfpathlineto{\pgfqpoint{\pgfarrowlengthtemp pt}{ \pgfarrowwidthtemp pt}}
+            \pgfpathlineto{\pgfqpoint{\pgfarrowlengthtemp pt}{-\pgfarrowwidthtemp pt}}
+            \pgfpathclose
+            \pgfusepath{fill}
+        \else
+      % it is invisible, check in pointing your eye
+            \ifdim\pgfarrowsinpitch pt>0pt
+                \pgfpathcircle{\pgfqpoint{\pgfarrowlengthcos pt}{0pt}}{.5\pgfarrowlinewidth}
+                \pgfsetcolor{white}
+                \pgfusepath{fill}
+            \fi
+        \fi
+        \pgfpathmoveto{\pgfpointorigin}
+    }
+}
+
+
+\def\pgfarrowtangenttosincos#1{
+    #1
+    \tdplotcrossprod(\pgf@xx,\pgf@yx,\pgf@zx)(\pgf@xy,\pgf@yy,\pgf@zy)
+    \pgfmathsetmacro\pgfarrowtangentxxyy{\pgf@x*\pgf@x+\pgf@y*\pgf@y}
+    \pgfmathsetmacro\pgfarrowtangentxy{sqrt(\pgfarrowtangentxxyy)}
+    \pgfmathsetmacro\pgfarrowtangentz{(\pgftemp@x*\tdplotresx+\pgftemp@y*\tdplotresy+\pgftemp@z*\tdplotresz)/72.27*2.54}
+    %\message{^^J^^J(\tdplotresx,\tdplotresy,\tdplotresz)(\pgfarrowtangentxy,\pgfarrowtangentz)}\show\\
+    \pgfmathsetmacro\pgfarrowtangentxyz{sqrt(\pgfarrowtangentxxyy+\pgfarrowtangentz*\pgfarrowtangentz)}
+    \pgfmathsetmacro\pgfarrowcospitch{\pgfarrowtangentxy/\pgfarrowtangentxyz}
+    \pgfmathsetmacro\pgfarrowsinpitch{\pgfarrowtangentz/\pgfarrowtangentxyz}
+}
+\pgfkeys{
+    /pgf/arrow keys/.cd,
+    tangent/.code={%
+        \tikz@scan@one@point\pgfarrowtangenttosincos#1
+    }
+}
+
+\pgfdeclarearrow{
+    name = Cone2,
+    defaults = {             % inherit from Kite
+        length     = +3.6pt +5.4,
+        width'     = +0pt +0.5,
+        line width = +0pt 1 1,
+        tangent    = {(1,0,0)} % lie on x-axis
+    },
+    cache = false,           % no need cache
+    setup code = {},         % so no need setup
+    drawing code = {         % but still need math
+    % draw the base
+        \pgfmathsetmacro\pgfarrowhalfwidth{.5\pgfarrowwidth}
+        \pgfmathsetmacro\pgfarrowhalfwidthsin{\pgfarrowhalfwidth*abs(\pgfarrowsinpitch)}
+        \pgfpathellipse{\pgfpointorigin}{\pgfqpoint{\pgfarrowhalfwidthsin pt}{0pt}}{\pgfqpoint{0pt}{\pgfarrowhalfwidth pt}}
+        \pgfusepath{fill}
+    % test if the cone part visible
+        \pgfmathsetmacro\pgfarrowlengthcos{\pgfarrowlength*\pgfarrowcospitch}
+        \ifdim\pgfarrowlengthcos pt>\pgfarrowhalfwidthsin pt
+      % it is visible, so draw
+            \pgfmathsetmacro\pgfarrowlengthtemp{\pgfarrowhalfwidthsin*\pgfarrowhalfwidthsin/\pgfarrowlengthcos}
+            \pgfmathsetmacro\pgfarrowwidthtemp{\pgfarrowhalfwidth/\pgfarrowlengthcos*sqrt(\pgfarrowlengthcos*\pgfarrowlengthcos-\pgfarrowhalfwidthsin*\pgfarrowhalfwidthsin)}
+            \pgfpathmoveto{\pgfqpoint{\pgfarrowlengthcos pt}{0pt}}
+            \pgfpathlineto{\pgfqpoint{\pgfarrowlengthtemp pt}{ \pgfarrowwidthtemp pt}}
+            \pgfpathlineto{\pgfqpoint{\pgfarrowlengthtemp pt}{-\pgfarrowwidthtemp pt}}
+            \pgfpathclose
+            \pgfusepath{fill}
+        \else
+      % it is invisible, check in pointing your eye
+            \ifdim\pgfarrowsinpitch pt>0pt
+                \pgfpathcircle{\pgfqpoint{\pgfarrowlengthcos pt}{0pt}}{.5\pgfarrowlinewidth}
+                \pgfsetcolor{white}
+                \pgfusepath{fill}
+            \fi
+        \fi
+        \pgfpathmoveto{\pgfpointorigin}
+    }
+}
+
+
+
+
+
+
+\def\pgfpointxyz#1#2#3{%
+    \pgfmathparse{#1}%
+    \let\pgftemp@x=\pgfmathresult%
+    \pgfmathparse{#2}%
+    \let\pgftemp@y=\pgfmathresult%
+    \pgfmathparse{#3}%
+    \let\pgftemp@z=\pgfmathresult%
+    \pgf@x=\pgftemp@x\pgf@xx%
+    \advance\pgf@x by \pgftemp@y\pgf@yx%
+    \advance\pgf@x by \pgftemp@z\pgf@zx%
+    \pgf@y=\pgftemp@x\pgf@xy%
+    \advance\pgf@y by \pgftemp@y\pgf@yy%
+    \advance\pgf@y by \pgftemp@z\pgf@zy%
+  % ↑↑↑old definition↑↑↑ ↓↓↓new code↓↓↓
+    \global\let\pgfolderpointx\pgfoldpointx
+    \global\let\pgfolderpointy\pgfoldpointy
+    \global\let\pgfolderpointz\pgfoldpointz
+    \global\let\pgfoldpointx\pgftemp@x
+    \global\let\pgfoldpointy\pgftemp@y
+    \global\let\pgfoldpointz\pgftemp@z
+}
+
+
+\pgfdeclarearrow{
+    name = Cone3,
+    defaults = {             % inherit from Kite
+        length     = +3.6pt +5.4,
+        width'     = +0pt +0.5,
+        line width = +0pt 1 1,
+        tangent    = {(1,0,0)} % lie on x-axis
+    },
+    cache = false,           % no need cache
+    setup code = {},         % so no need setup
+    drawing code = {         % but still need math
+    % calculate the tangent
+        \pgfkeys{pgf/arrow keys/tangent={(\pgfoldpointx-\pgfolderpointx,\pgfoldpointy-\pgfolderpointy,\pgfoldpointz-\pgfolderpointz)}}
+    % draw the base
+        \pgfmathsetmacro\pgfarrowhalfwidth{.5\pgfarrowwidth}
+        \pgfmathsetmacro\pgfarrowhalfwidthsin{\pgfarrowhalfwidth*abs(\pgfarrowsinpitch)}
+        \pgfpathellipse{\pgfpointorigin}{\pgfqpoint{\pgfarrowhalfwidthsin pt}{0pt}}{\pgfqpoint{0pt}{\pgfarrowhalfwidth pt}}
+        \pgfusepath{fill}
+    % test if the cone part visible
+        \pgfmathsetmacro\pgfarrowlengthcos{\pgfarrowlength*\pgfarrowcospitch}
+        \ifdim\pgfarrowlengthcos pt>\pgfarrowhalfwidthsin pt
+      % it is visible, so draw
+            \pgfmathsetmacro\pgfarrowlengthtemp{\pgfarrowhalfwidthsin*\pgfarrowhalfwidthsin/\pgfarrowlengthcos}
+            \pgfmathsetmacro\pgfarrowwidthtemp{\pgfarrowhalfwidth/\pgfarrowlengthcos*sqrt(\pgfarrowlengthcos*\pgfarrowlengthcos-\pgfarrowhalfwidthsin*\pgfarrowhalfwidthsin)}
+            \pgfpathmoveto{\pgfqpoint{\pgfarrowlengthcos pt}{0pt}}
+            \pgfpathlineto{\pgfqpoint{\pgfarrowlengthtemp pt}{ \pgfarrowwidthtemp pt}}
+            \pgfpathlineto{\pgfqpoint{\pgfarrowlengthtemp pt}{-\pgfarrowwidthtemp pt}}
+            \pgfpathclose
+            \pgfusepath{fill}
+        \else
+      % it is invisible, check in pointing your eye
+            \ifdim\pgfarrowsinpitch pt>0pt
+                \pgfpathcircle{\pgfqpoint{\pgfarrowlengthcos pt}{0pt}}{.5\pgfarrowlinewidth}
+                \pgfsetcolor{white}
+                \pgfusepath{fill}
+            \fi
+        \fi
+        \pgfpathmoveto{\pgfpointorigin}
+    }
+}

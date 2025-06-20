@@ -1,9 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}
 %\ProvidesPackage{cmdCommune}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 \RequirePackage{fouriernc}
-\RequirePackage{amsmath}
-\RequirePackage[bb=fourier, cal=cm, scr=boondox, frak=euler]{mathalpha}
+\RequirePackage[
+    bb=ncmbbk,
+    cal=cm,
+    scr=boondox,
+    frak=euler,
+    oldbold
+    ]{mathalpha}
+
+\let\amsmathbb\mathbb
+\AtBeginDocument{%
+    \let\mathbb\relax
+    \newcommand{\mathbb}[1]{\amsmathbb{#1}}
+}
+
+\RequirePackage{amsmath, amsfonts, amssymb}
+
 \RequirePackage{bm}
 \RequirePackage{graphicx}
 \RequirePackage{ushort}
@@ -11,6 +27,24 @@
 
 \RequirePackage{stackengine}
 \RequirePackage{scalerel}
+\RequirePackage{oldstyle}
+
+\RequirePackage{fixmath}
+
+
+\stackMath
+\newcommand\reallywidehat[1]{%
+\savestack{\tmpbox}{\stretchto{%
+  \scaleto{%
+    \scalerel*[\widthof{\ensuremath{#1}}]{\kern.1pt\mathchar"0362\kern.1pt}%
+    {\rule{0ex}{\textheight}}%WIDTH-LIMITED CIRCUMFLEX
+  }{\textheight}% 
+}{2.4ex}}%
+\stackon[-6.9pt]{#1}{\tmpbox}%
+}
+\parskip 1ex
+
+\newcommand\mystrut{\rule{0pt}{\ht\strutbox}}
 
 %\newcommand{\paren}[1]{\mathopen{}\left( {#1}_{{}_{}}\,\negthickspace\right)\mathclose{}}
 %\usepackage{mleftright}
@@ -45,5 +79,78 @@
 \newcommand{\cosP}[1]{\ensuremath{\cos \left( #1 \right)}\xspace}
 \newcommand{\sinP}[1]{\ensuremath{\sin \left( #1 \right)}\xspace}
 
+% Signe moins fantome : 
+\newcommand{\phantMinus}{\ensuremath{\phantom{-}}\xspace}
 
+% Derivee partielle :
 \newcommand{\dpar}[2]{\ensuremath{\dfrac{\partial #1}{\partial #2} }\xspace}
+\newcommand{\dpartxt}[2]{\ensuremath{\frac{\partial #1}{\partial #2} }\xspace}
+
+% Derivee : 
+\newcommand{\der}{\ensuremath{\mathrm{d}}\xspace}
+
+% Matrice de passage
+\newcommand{\matPass}{\ensuremath{\mat{\mathcal{P}}}\xspace}
+
+\newcommand{\matPassDet}[2]{\ensuremath{\mat{\mathcal{P}}_{\Scale[0.80]{#1} \rightarrow \Scale[0.80]{#2}}}\xspace}
+
+% Base : 
+\newcommand{\base}[1]{\ensuremath{\mathcal{B}_{#1}}\xspace}
+
+% Composantes vecteur : 
+\newcommand{\compVec}[1]{\ensuremath{\begin{Bmatrix} #1 \end{Bmatrix}}\xspace}
+
+% Composantes matrice : 
+\newcommand{\compMat}[1]{\ensuremath{\begin{bmatrix} #1 \end{bmatrix}}\xspace}
+
+\newcommand{\parentheses}[1]{\ensuremath{\begin{pmatrix} #1 \end{pmatrix}}\xspace}
+
+\newcommand{\threeD}{\ensuremath{$3$\textsc{d}}\xspace}
+\newcommand{\twoD}{\ensuremath{$2$\textsc{d}}\xspace}
+\newcommand{\oneD}{\ensuremath{$1$\textsc{d}}\xspace}
+
+\newcommand{\inBase}[2]{\ensuremath{\begin{pmatrix} #1 \end{pmatrix}_{#2}}\xspace}
+
+
+%Indice: 
+
+% Fe : 
+\newcommand{\feInd}{\ensuremath{\Scale[0.6]{\textsc{ef}}}\xspace}
+
+% Fe-CIN
+\newcommand{\feCinInd}{\ensuremath{\Scale[0.6]{\textsc{ef-cin}}}\xspace}
+
+% Cam : 
+\newcommand{\camInd}{\ensuremath{\Scale[0.65]{\mathrm{c}}}\xspace}
+
+% Cam 0 : 
+\newcommand{\camZeroInd}{\ensuremath{\Scale[0.65]{\mathrm{c_{\textos{0}}}}}\xspace}
+
+% Cam 1 :
+\newcommand{\camOneInd}{\ensuremath{\Scale[0.65]{\mathrm{c_{\textos{1}}}}}\xspace}
+
+% Indice retinien :  
+\newcommand{\retInd}{\ensuremath{\Scale[0.65]{\mathrm{ret}}}\xspace}
+
+% Indice image :
+\newcommand{\imgInd}{\ensuremath{\Scale[0.65]{\mathrm{img}}}\xspace}
+
+% Indice objet :
+\newcommand{\objInd}{\ensuremath{\Scale[0.65]{\mathrm{obj}}}\xspace}
+
+% Indice meilleur plan : 
+\newcommand{\mpInd}{\ensuremath{\Scale[0.6]{\mathrm{mp}}}\xspace}
+
+% Indice meilleur plan : 
+\newcommand{\locInd}{\ensuremath{\Scale[0.6]{\mathrm{loc}}}\xspace}
+
+% Indice exp : 
+\newcommand{\expInd}{\ensuremath{\Scale[0.65]{\mathrm{exp}}}\xspace}
+
+% Indice num : 
+\newcommand{\numInd}{\ensuremath{\Scale[0.65]{\mathrm{num}}}\xspace}
+
+% Indice msr :
+\newcommand{\msrInd}{\ensuremath{\Scale[0.65]{\mathrm{msr}}}\xspace}
+
+\endinput

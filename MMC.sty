@@ -1,14 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{mmc}
-
-\RequirePackage{fouriernc}
-\RequirePackage{amsmath}
-\RequirePackage[bb=fourier, cal=cm, scr=boondox, frak=euler]{mathalpha}
-\RequirePackage{bm}
-\RequirePackage{graphicx}
-\RequirePackage{ushort}
-\RequirePackage{xspace}
-
+\ProvidesPackage{MMC}
 
 \RequirePackage{cmdCommune}
 
@@ -30,14 +21,38 @@
 \newcommand{\bSig}{\ensuremath{\Scale[1.4]{\sigma}}\xspace}
 \newcommand{\bEps}{\ensuremath{\Scale[1.4]{\varepsilon}}\xspace}
 
+\newcommand{\gradU}{\ensuremath{}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                               CONFIGURATIONS  : 
+%----------------------------------------------------------------------------------------
+\newcommand{\configIni}{\ensuremath{\Omega_{\Scale[0.6]{0}}}\xspace}
+\newcommand{\configT}{\ensuremath{\Omega_{t}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                               CORPS PHYSIQUE  : 
+%----------------------------------------------------------------------------------------
+\newcommand{\corpsM}{\ensuremath{\mathcal{M}}\xspace}
+\newcommand{\bordM}{\ensuremath{\partial\mathcal{M}}\xspace}
+
+%----------------------------------------------------------------------------------------
+%                             FONCTION DE TRANSFORAMTION : 
+%----------------------------------------------------------------------------------------
+\newcommand{\transfoPhi}{\ensuremath{\ve{\phi}}\xspace}
 %----------------------------------------------------------------------------------------
 %                               VECTEURS MMC : 
 %----------------------------------------------------------------------------------------
+% Vecteur unitaire de la base : 
+\newcommand{\vecEindice}[1]{\ensuremath{\ve{e}_{\Scale[0.6]{#1}}}\xspace}
+
 % Vecteur position courante : 
 \newcommand{\ptx}{\ensuremath{\ve{\mathbf{x}}}\xspace}
 
 % Vecteur position initiale : 
 \newcommand{\ptX}{\ensuremath{\ve{\mathbf{X}}}\xspace}
+
+% Vecteur deplacemetn : 
+\newcommand{\vecU}{\ensuremath{\ve{\mathbf{u}}}\xspace}
 
 % Vecteur propre de V 
 \newcommand{\vecEigV}{\ensuremath{\ve{\mathcal{V}}}\xspace}
@@ -56,12 +71,23 @@
 % Tenseur eulerien d'elongations :
 \newcommand{\stV}{\ensuremath{\st{\boldsymbol{V}}}\xspace}
 
+% Tenseur Cauchy-Green droit : 
+\newcommand{\stC}{\ensuremath{\st{\boldsymbol{C}}}\xspace}
+
+% Tenseur de Cauchy-Green gauche : 
+\newcommand{\stB}{\ensuremath{\st{\boldsymbol{B}}}\xspace}
+
 % Tenseur de rotation :
-\newcommand{\stRot}{\ensuremath{\st{\boldsymbol{R}}}\xspace}
+\newcommand{\stR}{\ensuremath{\st{\boldsymbol{R}}}\xspace}
 
 % Tenseur de transformations :
 \newcommand{\stF}{\ensuremath{\st{\boldsymbol{F}}}\xspace}
 
+% Operateur gradient : 
+\newcommand{\opeGrad}{\ensuremath{\st{\mathbf{Grad}}}\xspace}
+
+% Tenseur gradient champs de deplacement : 
+\newcommand{\stGradU}{\ensuremath{\opeGrad\left( \vecU \right)}\xspace}
 
 %----------------------------------------------------------------------------------------
 %                           TENSEUR DES CONTRAINTES : 
@@ -92,16 +118,20 @@
 %                               TENSEUR DES DEFORMATIONS : 
 %----------------------------------------------------------------------------------------
 \newcommand{\stEps}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}}\xspace}
+
+\newcommand{\stEpsExp}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}\mystrut^{\expInd}}\xspace}
+\newcommand{\stEpsNum}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}\mystrut^{\numInd}}\xspace}
+
 \newcommand{\stEpsIncN}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{(n)}}\xspace}
 
 \newcommand{\stEpsTot}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{tot}}}\xspace}
 \newcommand{\stEpsEl}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{el}}}\xspace}
 \newcommand{\stEpsP}{\ensuremath{\st{\Scale[1.4]{\boldsymbol{\varepsilon}}}^{\mathrm{p}}}\xspace}
 
-\newcommand{\stEpsComp}[1]{\ensuremath{\bEps_{#1}}\xspace}
+\newcommand{\stEpsComp}[1]{\ensuremath{\bEps_{\!#1}}\xspace}
 
-\newcommand{\stEpsExpComp}[1]{\ensuremath{\bEps^{\mathrm{exp}}_{#1}}\xspace}
-\newcommand{\stEpsNumComp}[1]{\ensuremath{\bEps^{\mathrm{num}}_{#1}}\xspace}
+\newcommand{\stEpsExpComp}[1]{\ensuremath{\bEps\mystrut^{\expInd}_{\!#1}}\xspace}
+\newcommand{\stEpsNumComp}[1]{\ensuremath{\bEps\mystrut^{\numInd}_{\!#1}}\xspace}
 
 % Trace du tenseur des deformations :
 \newcommand{\trStEps}{\ensuremath{\operatorname{tr} \bigl( \stEps \bigr)}\xspace}
@@ -147,6 +177,7 @@
 
 \newcommand{\sigmaZero}{\ensuremath{\bSig_{0}}\xspace}
 \newcommand{\sigmaVM}{\ensuremath{\bar{\bSig}}\xspace}
+\newcommand{\sigmaR}{\ensuremath{\bSig_{R}}\xspace}
 \newcommand{\sigmaInf}{\ensuremath{\bSig_{\infty}}\xspace}
 
 % Chargement : 
@@ -156,3 +187,4 @@
 \newcommand{\pIncN}{\ensuremath{p^{(n)}}\xspace}
 \newcommand{\pIncNp}{\ensuremath{p^{(n + 1)}}\xspace}
 
+\endinput

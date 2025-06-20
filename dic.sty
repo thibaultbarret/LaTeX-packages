@@ -1,67 +1,85 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{dic}
 
-\RequirePackage{fouriernc}
-\RequirePackage{amsmath}
-\RequirePackage[bb=fourier, cal=cm, scr=boondox, frak=euler]{mathalpha}
-\RequirePackage{graphicx}
-\RequirePackage{xspace}
-\RequirePackage{oldstyle}
-
 
 \RequirePackage{cmdCommune}
 
 % Subset
 \newcommand{\sSubset}{\ensuremath{\mathscr{s}}\xspace}
 
-% Cam 0 : 
-\newcommand{\camZeroInd}{\ensuremath{\Scale[0.65]{\mathrm{c_{\textos{0}}}}}\xspace}
-
-% Cam 1 :
-\newcommand{\camOneInd}{\ensuremath{\Scale[0.65]{\mathrm{c_{\textos{1}}}}}\xspace}
-
-% Indice retinien :  
-\newcommand{\retInd}{\ensuremath{\Scale[0.65]{\mathrm{ret}}}\xspace}
-
-% Indice image :
-\newcommand{\imgInd}{\ensuremath{\Scale[0.65]{\mathrm{img}}}\xspace}
-
-% Indice objet :
-\newcommand{\objInd}{\ensuremath{\Scale[0.65]{\mathrm{obj}}}\xspace}
-
-% Indice meilleur plan : 
-\newcommand{\mpInd}{\ensuremath{\Scale[0.6]{\mathrm{mp}}}\xspace}
 
 % Distance object camera : 
 \newcommand{\distCamObj}{\ensuremath{\mathscr{D}_{\mathsf{c} \rightarrow \mathsf{o}}}\xspace}
 
 % Fonction camera : 
-\newcommand{\fonctionCamera}{\ensuremath{\ve{\mathcal{P}}_{c}}\xspace}
+\newcommand{\fonctionCamera}{\ensuremath{\ve{\mathsf{P}}_{c}}\xspace}
 
 % Point m et M :
-\newcommand{\pointm}{\ensuremath{\ve{m}}\xspace}
+\newcommand{\pointm}{\ensuremath{\ve{\mathsf{m}}}\xspace}
+\newcommand{\xImg}{\ensuremath{\mathsf{x}}\xspace}
+\newcommand{\yImg}{\ensuremath{\mathsf{y}}\xspace}
+
+% Point m sans distorsions :
+\newcommand{\pointmU}{\ensuremath{\ve{\mathsf{m}}_{\mathrm{u}}}\xspace}
+\newcommand{\xImgU}{\ensuremath{\mathsf{x}_{\mathrm{u}}}\xspace}
+\newcommand{\yImgU}{\ensuremath{\mathsf{y}_{\mathrm{u}}}\xspace}
+
+% Point m avec distorsions
+\newcommand{\pointmD}{\ensuremath{\ve{\mathsf{m}}_{\mathrm{d}}}\xspace}
+\newcommand{\xImgD}{\ensuremath{\mathsf{x}_{\mathrm{d}}}\xspace}
+\newcommand{\yImgD}{\ensuremath{\mathsf{y}_{\mathrm{d}}}\xspace}
+
 \newcommand{\pointM}{\ensuremath{\ve{M}}\xspace}
+\newcommand{\pointMMob}{\ensuremath{\widetilde{\ve{M}}}\xspace}
+\newcommand{\pointmMob}{\ensuremath{\ve{\widetilde{\mathsf{m}}}}\xspace}
+
+\newcommand{\pointMobj}{\ensuremath{\ve{M}_{\objInd}}\xspace}
+\newcommand{\pointMcam}{\ensuremath{\ve{M}_{\camZeroInd}}\xspace}
+
+\newcommand{\pointMobjMob}{\ensuremath{\widetilde{\ve{M}}_{\objInd}}\xspace}
+\newcommand{\pointMcamMob}{\ensuremath{\widetilde{\ve{M}}_{\camZeroInd}}\xspace}
 
 % Matrice contenant 
 \newcommand{\rotEtTr}{\ensuremath{\mat{T}}\xspace}
 
+% Matrice des parametres intrinseques : 
+\newcommand{\matK}{\ensuremath{\mat{\mathcal{K}}}\xspace}
+
+\newcommand{\matJ}{\ensuremath{\mat{\mathcal{J}}}\xspace}
+\newcommand{\matJcomp}[1]{\ensuremath{\mathcal{J}_{#1}}\xspace}
+
+
 %------------------------------------------------------------------------------------
 %                              PARAMETRES CALIBRATION :
 %------------------------------------------------------------------------------------
-
 % Distance focale : 
+\newcommand{\focaleF}{\ensuremath{\mathit{f}}\xspace}
+
 \newcommand{\fx}{\ensuremath{\mathit{f}_{\mathrm{x}}}\xspace}
 \newcommand{\fy}{\ensuremath{\mathit{f}_{\mathrm{y}}}\xspace}
 \newcommand{\fs}{\ensuremath{\mathit{f}_{\mathrm{s}}}\xspace}
 
-% Vecteur distorsions : 
-\newcommand{\vecDisto}{\ensuremath{\ve{\zeta}}\xspace}
+\newcommand{\fu}{\ensuremath{\mathit{f}_{\mathsf{u}}}\xspace}
+\newcommand{\fv}{\ensuremath{\mathit{f}_{\mathsf{v}}}\xspace}
+\newcommand{\fo}{\ensuremath{\mathit{f}_{\mathrm{o}}}\xspace}
 
+% Vecteur distorsions : 
+\newcommand{\vecDisto}{\ensuremath{\ve{\mathcal{D}}}\xspace}
+\newcommand{\vecDistoRad}{\ensuremath{\ve{\mathcal{D}}_{\mathrm{r}}}\xspace}
+\newcommand{\vecDistoTan}{\ensuremath{\ve{\mathcal{D}}_{\mathrm{t}}}\xspace}
+
+\newcommand{\vecParamDisto}{\ensuremath{\ve{\zeta}}\xspace}
 
 
 % Centre optique
-\newcommand{\Cx}{\ensuremath{\mathcal{C}_{\mathrm{x}}}\xspace}
-\newcommand{\Cy}{\ensuremath{\mathcal{C}_{\mathrm{y}}}\xspace}
+\newcommand{\Cx}{\ensuremath{\mathrm{c}_{\mathrm{x}}}\xspace}
+\newcommand{\Cy}{\ensuremath{\mathrm{c}_{\mathrm{y}}}\xspace}
+
+\newcommand{\cu}{\ensuremath{\mathsf{c}_{\mathsf{u}}}\xspace}
+\newcommand{\cuHat}{\ensuremath{\hat{\mathsf{c}}_{\mathsf{u}}}\xspace}
+
+\newcommand{\cv}{\ensuremath{\mathsf{c}_{\mathsf{v}}}\xspace}
+\newcommand{\cvHat}{\ensuremath{\hat{\mathsf{c}}_{\mathsf{v}}}\xspace}
 
 % Coefficients de distorsions :
 \newcommand{\kappaOne}{\ensuremath{\kappa_{\mathrm{1}}}\xspace}
@@ -70,8 +88,8 @@
 
 \newcommand{\rhoD}{\ensuremath{\rho_{\mathrm{d}}}\xspace}
 
-\newcommand{\pOne}{\ensuremath{p_{\mathrm{1}}}\xspace}
-\newcommand{\pTwo}{\ensuremath{p_{\mathrm{2}}}\xspace}
+\newcommand{\pOne}{\ensuremath{\mathsf{p}_{\mathrm{1}}}\xspace}
+\newcommand{\pTwo}{\ensuremath{\mathsf{p}_{\mathrm{2}}}\xspace}
 
 %------------------------------------------------------------------------------------
 %                              DIFFERENTS REPERES :
@@ -83,38 +101,72 @@
 \newcommand{\repereObjet}{\ensuremath{\mathscr{R}_{\objInd}}\xspace}
 \newcommand{\repereObjetDic}{\ensuremath{\mathscr{R}^{\prime}_{\objInd}}\xspace}
 
-\newcommand{\repereCameraMaitre}{\ensuremath{\mathscr{R}_{\camZeroInd}}\xspace}
-\newcommand{\repereCameraEsclave}{\ensuremath{\mathscr{R}_{\camOneInd}}\xspace}
+\newcommand{\repereCamera}{\ensuremath{\mathscr{R}_{\camInd}}\xspace}
+
+\newcommand{\repereCameraZero}{\ensuremath{\mathscr{R}_{\camZeroInd}}\xspace}
+\newcommand{\repereCameraOne}{\ensuremath{\mathscr{R}_{\camOneInd}}\xspace}
 
 \newcommand{\repereMeilleurPlan}{\ensuremath{\mathscr{R}_{\mpInd}}\xspace}
+
+\newcommand{\repereLocal}{\ensuremath{\mathscr{R}_{\locInd}}\xspace}
+
+%------------------------------------------------------------------------------------
+%                              DIFFERENTES BASES :
+%------------------------------------------------------------------------------------
+\newcommand{\baseCam}{\ensuremath{\base{\camInd}}\xspace}
+\newcommand{\baseCamZero}{\ensuremath{\base{\camZeroInd}}\xspace}
+\newcommand{\baseCamOne}{\ensuremath{\base{\camOneInd}}\xspace}
+
+\newcommand{\baseObj}{\ensuremath{\base{\objInd}}\xspace}
+
+\newcommand{\baseLoc}{\ensuremath{\base{\locInd}}\xspace}
 
 %------------------------------------------------------------------------------------
 %                              MATRICE DE ROTATION :
 %------------------------------------------------------------------------------------
+\newcommand{\cosAlpha}{\ensuremath{\cosP{\alpha}}\xspace}
+\newcommand{\sinAlpha}{\ensuremath{\sinP{\alpha}}\xspace}
+
+\newcommand{\cosBeta}{\ensuremath{\cosP{\beta}}\xspace}
+\newcommand{\sinBeta}{\ensuremath{\sinP{\beta}}\xspace}
+
+\newcommand{\cosGamma}{\ensuremath{\cosP{\gamma}}\xspace}
+\newcommand{\sinGamma}{\ensuremath{\sinP{\gamma}}\xspace}
+
 % Matrice de rotation globale :
 %\newcommand{\matR}{\ensuremath{{\mathcal{R}}}\xspace}
 \newcommand{\matR}{\ensuremath{\mat{\mathcal{R}}}\xspace}
+\newcommand{\compMatR}[1]{\ensuremath{\mathcal{R}_{#1}}\xspace}
 
 % Matrice de rotation autour de x :
 \newcommand{\matRx}{\ensuremath{\mat{\mathcal{R}}_{x}}\xspace}
 
+% Transpose matrice de rotation autour de x :
+\newcommand{\transMatRx}{\ensuremath{\mat{\mathcal{R}}_{x}^{\intercal}}\xspace}
+
 % Matrice de rotation autour de y :
 \newcommand{\matRy}{\ensuremath{\mat{\mathcal{R}}_{y}}\xspace}
 
+% Transpose matrice de rotation autour de x :
+\newcommand{\transMatRy}{\ensuremath{\mat{\mathcal{R}}_{y}^{\intercal}}\xspace}
+
 % Matrice de rotation autour de z :
 \newcommand{\matRz}{\ensuremath{\mat{\mathcal{R}}_{z}}\xspace}
+
+% Transpose matrice de rotation autour de z :
+\newcommand{\transMatRz}{\ensuremath{\mat{\mathcal{R}}_{z}^{\intercal}}\xspace}
 
 % Composantes matrice de rotation x :
 \newcommand{\matriceRotationX}{\ensuremath{\begin{bmatrix}
             1 &         0      &        0        \\
             0 &  \cosP{\alpha} &  -\sinP{\alpha} \\
-            0 &  \sinP{\alpha} &   \cosP{\alpha} 
+            0 &  \sinP{\alpha} &  \phantMinus\cosP{\alpha} 
 \end{bmatrix}}\xspace}
 
 
 % Composantes matrice de rotation y :
 \newcommand{\matriceRotationY}{\ensuremath{\begin{bmatrix}
-            \cosP{\beta}  &  0 & \sinP{\beta} \\
+            \phantMinus\cosP{\beta}  &  0 & \sinP{\beta} \\
                   0       &  1 &      0       \\
            -\sinP{\beta}  &  0 & \cosP{\beta}
 \end{bmatrix}}\xspace}
@@ -122,8 +174,30 @@
 % Composantes matrice de rotation z :
 \newcommand{\matriceRotationZ}{\ensuremath{\begin{bmatrix}
             \cosP{\gamma} & -\sinP{\gamma} & 0 \\
-            \sinP{\gamma} &  \cosP{\gamma} & 0 \\
+            \sinP{\gamma} & \phantom{-} \cosP{\gamma} & 0 \\
                   0       &        0       & 1
+\end{bmatrix}}\xspace}
+
+
+% Composantes matrice de rotation x transposee : 
+\newcommand{\compTransMatRx}{\ensuremath{\begin{bmatrix}
+            1 &              0            &        0        \\
+            0 &  \phantMinus\cosP{\alpha} &  \sinP{\alpha} \\
+            0 &  -\sinP{\alpha}           &  \cosP{\alpha} 
+\end{bmatrix}}\xspace}
+
+% Composantes matrice de rotation y transposee : 
+\newcommand{\compTransMatRy}{\ensuremath{\begin{bmatrix}
+            \cosP{\beta}  &  0  &       -\sinP{\beta}    \\
+                  0       &  1  &             0          \\
+            \sinP{\beta}  &  0  & \phantMinus\cosP{\beta}
+\end{bmatrix}}\xspace}
+
+% Composantes matrice de rotation z transposee : 
+\newcommand{\compTransMatRz}{\ensuremath{\begin{bmatrix}
+            \phantMinus \cosP{\gamma} & \sinP{\gamma} & 0 \\
+            -\sinP{\gamma}            & \cosP{\gamma} & 0 \\
+                         0            &        0      & 1
 \end{bmatrix}}\xspace}
 
 
@@ -142,8 +216,10 @@
 %                               ORIGINE REPERE :
 %------------------------------------------------------------------------------------
 % Origine du repere de la camera 0
-\newcommand{\origineCam}{\ensuremath{\mathcal{O}_{\camZeroInd}}\xspace}
+\newcommand{\origineCam}{\ensuremath{\mathcal{O}_{\camInd}}\xspace}
+\newcommand{\origineCamZero}{\ensuremath{\mathcal{O}_{\camZeroInd}}\xspace}
 \newcommand{\origineCamOne}{\ensuremath{\mathcal{O}_{\camOneInd}}\xspace}
+
 \newcommand{\origineMp}{\ensuremath{\mathcal{O}_{\mpInd}}\xspace}
 
 \newcommand{\origineObjet}{\ensuremath{\mathcal{O}_{\objInd}}\xspace}
@@ -169,6 +245,10 @@
 \newcommand{\vecYobj}{\ensuremath{\ve{y}_{\objInd}}\xspace}
 \newcommand{\vecZobj}{\ensuremath{\ve{z}_{\objInd}}\xspace}
 
+% Vecteur local : 
+\newcommand{\vecXloc}{\ensuremath{\ve{x}_{\locInd}}\xspace}
+\newcommand{\vecYloc}{\ensuremath{\ve{y}_{\locInd}}\xspace}
+\newcommand{\vecZloc}{\ensuremath{\ve{z}_{\locInd}}\xspace}
 
 % Vecteur capteur retinien : 
 \newcommand{\vecXret}{\ensuremath{\ve{x}_{\retInd}}\xspace}
@@ -176,14 +256,19 @@
 \newcommand{\vecZret}{\ensuremath{\ve{z}_{\retInd}}\xspace}
 
 % Vecteur camera : 
-\newcommand{\vecXcam}{\ensuremath{\ve{x}_{\camZeroInd}}\xspace}
+\newcommand{\vecXcam}{\ensuremath{\ve{x}_{\camInd}}\xspace}
+\newcommand{\vecYcam}{\ensuremath{\ve{y}_{\camInd}}\xspace}
+\newcommand{\vecZcam}{\ensuremath{\ve{z}_{\camInd}}\xspace}
+
+\newcommand{\vecXcamZero}{\ensuremath{\ve{x}_{\camZeroInd}}\xspace}
 \newcommand{\vecXcamPrime}{\ensuremath{\ve{x}^{\prime}_{\camZeroInd}}\xspace}
 
-\newcommand{\vecYcam}{\ensuremath{\ve{y}_{\camZeroInd}}\xspace}
+\newcommand{\vecYcamZero}{\ensuremath{\ve{y}_{\camZeroInd}}\xspace}
 \newcommand{\vecYcamPrime}{\ensuremath{\ve{y}^{\prime}_{\camZeroInd}}\xspace}
 
-\newcommand{\vecZcam}{\ensuremath{\ve{z}_{\camZeroInd}}\xspace}
 \newcommand{\vecZcamPrime}{\ensuremath{\ve{z}}\xspace}
+
+\newcommand{\vecZcamZero}{\ensuremath{\ve{z}_{\camZeroInd}}\xspace}
 
 
 \newcommand{\vecXcamOne}{\ensuremath{\ve{x}_{\camOneInd}}\xspace}
@@ -202,22 +287,54 @@
 \newcommand{\vecZmp}{\ensuremath{\ve{z}_{\mpInd}}\xspace}
 
 % Vecteur image : 
-\newcommand{\vecUimg}{\ensuremath{\ve{u}}\xspace}
-\newcommand{\vecVimg}{\ensuremath{\ve{v}}\xspace}
+\newcommand{\vecUimg}{\ensuremath{\ve{\mathsf{u}}}\xspace}
+\newcommand{\vecVimg}{\ensuremath{\ve{\mathsf{v}}}\xspace}
 
 
 % vecteur unitaire en colonne : 
-\newcommand{\vecZunitaireColComp}{\ensuremath{\begin{Bmatrix}
+\newcommand{\compVecZunitaireCol}{\ensuremath{
+        \begin{Bmatrix}
             0 \\
             0 \\
             1 \\
-\end{Bmatrix}}\xspace}
+        \end{Bmatrix}
+}\xspace}
+
+\newcommand{\compVecZunitaireLig}{\ensuremath{\begin{Bmatrix}
+            0 &
+            0 &
+            1
+\end{Bmatrix}^{\intercal}}\xspace}
 
 % vecteur normal au meilleur plan :
 \newcommand{\vecNmp}{\ensuremath{\ve{n}_{\mpInd}}\xspace}
+%\newcommand{\vecXmp}{\ensuremath{\ve{x}_{\mpInd}}\xspace}
+%\newcommand{\vecYmp}{\ensuremath{\ve{y}_{\mpInd}}\xspace}
+
 \newcommand{\vecNmpComp}{\ensuremath{\bigl\{ n_{\mpInd} \bigr\}}\xspace}
 
 
 %------------------------------------------------------------------------------------
 % Meilleur plan :
 \newcommand{\bestPlane}{\ensuremath{\mathscr{P}_{\mpInd}}\xspace}
+
+
+% Matrice de passage : 
+\newcommand{\matPassObjCamZero}{\ensuremath{\matPassDet{\baseObj}{\baseCamZero}}\xspace}
+
+\newcommand{\matPassCamZeroLoc}{\ensuremath{\matPassDet{\baseCamZero}{\base{\locInd}}}\xspace}
+
+
+
+% Vecteur deplacemetns : 
+\newcommand{\vecUobj}{\ensuremath{\ve{\mathrm{\mathbf{U}}}_{\objInd}}\xspace}
+\newcommand{\vecUsubset}{\ensuremath{\ve{\mathrm{\mathbf{U}}}_{\sSubset}}\xspace}
+
+\newcommand{\vecUcamZero}{\ensuremath{\ve{\mathrm{\mathbf{U}}}_{\camZeroInd}}\xspace}
+
+\newcommand{\vecPosObj}{\ensuremath{\ve{\mathrm{\mathbf{X}}}_{\objInd}}\xspace}
+\newcommand{\vecPosSubset}{\ensuremath{\ve{\mathrm{\mathbf{X}}}_{\sSubset}}\xspace}
+
+\newcommand{\vecPosCamZero}{\ensuremath{\ve{\mathrm{\mathbf{X}}}_{\camZeroInd}}\xspace}
+
+

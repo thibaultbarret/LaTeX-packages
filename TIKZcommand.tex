@@ -10,4 +10,103 @@
     \draw [#4] ({#1}, {#2-2}) -- ({#1}, {#2+2}) ; 
 }
 
+\makeatletter
+\newcommand{\gettikzxy}[3]{%
+  \tikz@scan@one@point\pgfutil@firstofone#1\relax
+  \edef#2{\the\pgf@x}%
+  \edef#3{\the\pgf@y}%
+}
 
+\newcommand{\drawDashedCube}[2]{
+    % Back part : 
+    \draw[#1] (0., 0., 0.) --
+        +(0., #2, 0.) --
+        +(0., #2, #2) --
+        +(0., 0., #2) -- cycle ; 
+    
+    % Front part
+    \draw [#1] ({#2}, {0.}, {0.}) --
+        +(0., #2, 0.) --
+        +(0., #2, #2) --
+        +(0., 0., #2) -- cycle ; 
+
+    % Link rectangles :
+    \draw [#1] (0., 0., 0.) -- +(#2, 0., 0.) ; 
+    \draw [#1] (0., #2, 0.) -- +(#2, 0., 0.) ; 
+    \draw [#1] (0., 0., #2) -- +(#2, 0., 0.) ; 
+    \draw [#1] (0., #2, #2) -- +(#2, 0., 0.) ; 
+}
+
+
+\newcommand{\RotatedPointXYZ}[7]{%
+    % #1 = alpha (X), #2 = beta (Y), #3 = gamma (Z)
+    % #4 = x, #5 = y, #6 = z, #7 = nom du point (P => \Px, \Py, \Pz)
+
+    \pgfmathsetmacro{\alpha}{#1}
+    \pgfmathsetmacro{\beta}{#2}
+    \pgfmathsetmacro{\gamma}{#3}
+    \pgfmathsetmacro{\x}{#4}
+    \pgfmathsetmacro{\y}{#5}
+    \pgfmathsetmacro{\z}{#6}
+
+    % Calcul des cosinus/sinus
+    \pgfmathsetmacro{\ca}{cos(\alpha)}
+    \pgfmathsetmacro{\sa}{sin(\alpha)}
+    \pgfmathsetmacro{\cb}{cos(\beta)}
+    \pgfmathsetmacro{\sb}{sin(\beta)}
+    \pgfmathsetmacro{\cg}{cos(\gamma)}
+    \pgfmathsetmacro{\sg}{sin(\gamma)}
+
+    % Rotation XYZ : R = Rz * Ry * Rx
+    \pgfmathsetmacro{\xp}{
+        \cb*\cg*\x + (-\cg*\sa*\sb + \ca*\sg)*\y + (\sa*\sg + \ca*\cg*\sb)*\z
+    }
+    \pgfmathsetmacro{\yp}{
+        -\cb*\sg*\x + (\ca*\cg + \sa*\sb*\sg)*\y + (-\cg*\sa + \ca*\sb*\sg)*\z
+    }
+    \pgfmathsetmacro{\zp}{
+        \sb*\x + \cb*\sa*\y + \ca*\cb*\z
+    }
+
+    % Enregistrer dans \<P>x, \y, \z
+    \global\expandafter\edef\csname #7x\endcsname{\xp}
+    \global\expandafter\edef\csname #7y\endcsname{\yp}
+    \global\expandafter\edef\csname #7z\endcsname{\zp}
+}
+
+\newcommand{\marker}[2]{%
+  \tikz[baseline=-0.6ex, x=1ex, y=1ex]%
+    \draw[mark=#1, mark size=1.5pt, #2] plot coordinates {(0,0)};%
+}
+
+\newcommand{\drawSubset}[4]{
+    \pgfmathsetmacro{\halfSubset}{div(#3,2)}
+     \draw [#4] (axis cs:{#1 -\halfSubset},{#2 - \halfSubset}) rectangle (axis cs:{#1 +\halfSubset},{#2 + \halfSubset}) ; 
+}
+
+\newcommand{\drawVSG}[4]{
+    \pgfmathsetmacro{\halfVSG}{div(#3,2)}
+     \draw [#4] (axis cs:{#1 -\halfVSG},{#2 - \halfVSG}) rectangle (axis cs:{#1 +\halfVSG},{#2 + \halfVSG}) ; 
+}
+
+\newcommand{\drawNotched}[1]{\begin{tikzpicture}[baseline=(current bounding box.south), scale = 0.1]
+        \draw [#1] (-2., -1) arc (-90:90:1) --
+        (-2, 2.5) --
+        (2, 2.5) --
+        (2, 1) arc (90:270:1) -- 
+        (2, -2.5) -- 
+        (-2, -2.5) -- 
+        cycle ;
+    \end{tikzpicture}
+}
+
+\newcommand{\drawNotchedExternalize}[2]{\tikzsetnextfilename{#1}\begin{tikzpicture}[baseline=(current bounding box.south), scale = 0.1]
+        \draw [#2] (-2., -1) arc (-90:90:1) --
+        (-2, 2.5) --
+        (2, 2.5) --
+        (2, 1) arc (90:270:1) -- 
+        (2, -2.5) -- 
+        (-2, -2.5) -- 
+        cycle ;
+    \end{tikzpicture}
+}

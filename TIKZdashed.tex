@@ -1,0 +1,25 @@
+\tikzset{
+    cheating dash/.code args={on #1 off #2 ends #3}{%
+        % mostly borrowed from V5 in answer to https://tex.stackexchange.com/questions/133271/can-tikz-dashed-lines-emulate-pstricks-dashed-lines
+        \csname tikz@addoption\endcsname{%Use csname so catcode of @ doesn't have do be changed.
+            \pgfgetpath\currentpath%
+            \pgfprocessround{\currentpath}{\currentpath}%
+            \csname pgf@decorate@parsesoftpath\endcsname{\currentpath}{\currentpath}%
+            \pgfmathparse{max(#1-#3,0)}\let\dashphase=\pgfmathresult%
+            \pgfmathparse{\csname pgf@decorate@totalpathlength\endcsname-#1+2*\dashphase}\let\rest=\pgfmathresult%
+            \pgfmathparse{#1+#2}\let\onoff=\pgfmathresult%
+            \pgfmathparse{max(floor(\rest/\onoff), 1)}\let\nfullonoff=\pgfmathresult%
+            \pgfmathparse{max((\rest-\onoff*\nfullonoff)/\nfullonoff+#2, #2)}\let\offexpand=\pgfmathresult%
+        \pgfsetdash{{#1}{\offexpand}}{\dashphase pt}}%
+    },
+    cheating dash per segment/.style args={on #1 off #2 ends #3}{
+        /utils/exec=\csname tikz@options\endcsname,%inherit options/.code={[\csname tikz@options\endcsname]},inherit options,
+        decoration={show path construction,
+                        %moveto code={},
+            lineto code={\draw [cheating dash=on #1 off #2 ends #3] (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);},
+            curveto code={\draw [cheating dash=on #1 off #2 ends #3] (\tikzinputsegmentfirst) .. controls (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb) .. (\tikzinputsegmentlast);},
+            closepath code={\draw [cheating dash=on #1 off #2 ends #3] (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);}
+        },
+        decorate,
+    },
+}
