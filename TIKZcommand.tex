@@ -110,3 +110,106 @@
         cycle ;
     \end{tikzpicture}
 }
+
+\newcommand{\crossCmdTikzCoord}[4]{
+    \draw [#4] ($ ({#1}, {#2})  + (-#3, 0) $) -- + ({2*#3}, 0) ; 
+    \draw [#4] ($ ({#1}, {#2})  + (0, -#3) $) -- + (0, {2*#3}) ; 
+}
+
+\newcommand{\crossCmdTikzPt}[3]{
+    \draw [#3] ($ (#1)  + (-#2, 0) $) -- + ({2*#2}, 0) ; 
+    \draw [#3] ($ (#1)  + (0, -#2) $) -- + (0, {2*#2}) ; 
+}
+
+% Rayon arc : 
+\newcommand{\radiusAnnotations}[6]{
+    % #1 Arc center coordinates
+
+    % #2 Radius
+
+    % #3 Angle at coordinates
+    
+    % #4 Style 
+
+    % #5 Node style 
+
+    % #6 Node text 
+
+    \draw [#4] (#1)  -- ($ (#1) + (#3: #2) $) node [#5] {#6} ;
+
+}
+
+% Annotatins d'arc de cercle
+\newcommand{\arcAnnotations}[8]{
+    % #1 : Arc center coordinates
+
+    % #2 : radius
+
+    % #3 : beginning angle
+
+    % #4 : ending angle
+    
+    % #5 : number of ticks
+
+    % #6 : length of ticks 
+
+    % #7 : space between ticks
+
+    % #8 : tikz option / style
+
+    \pgfmathsetmacro{\midAngle}{(#3 + #4)/2}
+
+    \pgfmathsetmacro{\halfLengthTicks}{#6/2}
+    \pgfmathsetmacro{\euclidianDivision}{div(#5,2)}
+    \pgfmathsetmacro{\pairImpair}{#5 - (\euclidianDivision*2)}
+    \pgfmathsetmacro{\halfSpaceBetweenTicks}{#7/2}
+     
+    %\node at (0, 10) [font = \LARGE] {\pgfmathprintnumber{\pairImpair}} ;
+
+    \ifthenelse{#5=1}{
+        \draw [#8] ($ (#1) + (\midAngle: {#2 - \halfLengthTicks})$) --
+                   ($ (#1) + (\midAngle: {#2 + \halfLengthTicks})$) ;
+    }{
+
+        \ifthenelse{0=\pairImpair}{
+            % Even number : 
+            \pgfmathsetmacro{\firstTicks}{\halfSpaceBetweenTicks}
+            \pgfmathsetmacro{\step}{\firstTicks + #7 }
+            \pgfmathsetmacro{\lastTicks}{((\euclidianDivision-1) * #7) + \halfSpaceBetweenTicks}
+             
+            %\node at (0, 10) {\midAngle} ;
+            %\node at (5, 10) {\firstTicks} ;
+            %\node at (10, 10) {\step} ;
+            %\node at (15, 10) {\lastTicks} ;
+
+            \foreach \i in {\firstTicks, \step, ..., \lastTicks}{
+
+                \draw [#8] ($ (#1) + ({\midAngle + \i}: {#2 - \halfLengthTicks})$) --
+                           ($ (#1) + ({\midAngle + \i}: {#2 + \halfLengthTicks})$) ;
+
+                \draw [#8] ($ (#1) + ({\midAngle - \i}: {#2 - \halfLengthTicks})$) --
+                           ($ (#1) + ({\midAngle - \i}: {#2 + \halfLengthTicks})$) ;    
+
+            }
+        }{
+            % Odd number : 
+            \pgfmathsetmacro{\firstTicks}{-(\euclidianDivision) * #7}
+            \pgfmathsetmacro{\step}{\firstTicks + #7 }
+            \pgfmathsetmacro{\lastTicks}{-\firstTicks}
+
+            %\node at (0, 10) {\midAngle} ;
+            %\node at (5, 10) {\firstTicks} ;
+            %\node at (10, 10) {\step} ;
+            %\node at (15, 10) {\lastTicks} ;
+
+            \foreach \i in {\firstTicks, \step, ..., \lastTicks}{
+
+                \draw [#8] ($ (#1) + ({\midAngle + \i}: {#2 - \halfLengthTicks})$) --
+                           ($ (#1) + ({\midAngle + \i}: {#2 + \halfLengthTicks})$) ;
+            }
+             
+        }
+    }
+}
+
+

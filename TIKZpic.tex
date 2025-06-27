@@ -1,0 +1,34 @@
+\tikzset{picSymetrie/.pic={
+        \begin{scope}[shift = {(0., -1)}]
+            \pgfmathsetmacro{\sinA}{sin(30)}
+            \pgfmathsetmacro{\cosA}{cos(30)}
+            \pgfmathsetmacro{\radius}{0.3}
+
+            \draw (90: 1) -- (-30:1) -- (-150: 1) -- cycle ; 
+            \draw ({\cosA - 1.5*\radius}, {-\sinA -\radius}) circle (\radius) ; 
+            \draw ({-\cosA + 1.5*\radius}, {-\sinA -\radius}) circle (\radius) ; 
+            \draw (-\cosA, {-\sinA -2.*\radius}) -- (\cosA, {-\sinA -2.*\radius}) ; 
+
+            \pgfmathsetmacro{\step}{(2*\cosA)/6}
+            \pgfmathsetmacro{\second}{-\cosA + \step}
+
+
+            \foreach \x in {-\cosA,\second,...,\cosA}{
+                \draw (\x, {-\sinA -2.*\radius}) -- +(-0.2, -0.3) ; 
+
+            } 
+        \end{scope}
+    },
+    picEncastrement/.pic = {
+        \begin{scope}
+            \pgfmathsetmacro{\step}{2/6}
+            \pgfmathsetmacro{\second}{-1 + \step}
+
+            \draw (0, 0) -- (0, -1) ;
+            \draw (-1, -1) -- +(2, 0) ;
+            \foreach \x in {-1,\second,...,1}{
+                \draw (\x, -1) -- +(-0.2, -0.3) ;
+            }
+        \end{scope}
+    },
+}

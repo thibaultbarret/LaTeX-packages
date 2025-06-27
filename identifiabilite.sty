@@ -16,7 +16,11 @@
 % Jeu de parametres :
 \newcommand{\jeuParametres}{\ensuremath{\ve{\theta}}\xspace}
 
+\newcommand{\incrementJeuParametres}{\ensuremath{\mathrm{d}\jeuParametres}\xspace}
+\newcommand{\incrementJeuParametresIt}[1]{\ensuremath{\incrementJeuParametres^{#1}}\xspace}
+
 \newcommand{\jeuParametresAd}{\ensuremath{\ve{\theta}}\xspace}
+
 
 \newcommand{\thetaInd}[1]{\ensuremath{\theta_{#1}}\xspace}
 \newcommand{\thetaIndAd}[1]{\ensuremath{\overline{\theta}_{#1}}\xspace}
@@ -24,6 +28,8 @@
 
 \newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{n}, \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
 \newcommand{\jeuParametresCompExplPert}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaIndNumb{2}, \: ...,  \: \thetaInd{n} \times (1 + \epsilon), \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
+
+
 
 %\newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{j}, \: ..., \theta_{\Scale[0.65]{1}}, \bigr\}}\xspace}
 
@@ -93,13 +99,13 @@
 \newcommand{\vecRes}{\ensuremath{\ve{r}}\xspace}
 
 % Composantes vecteur residus  : 
-\newcommand{\vecResComp}{\ensuremath{\vecObsComp{r}}\xspace}
+\newcommand{\vecResComp}{\ensuremath{\vecObsComp{\vecRes}}\xspace}
 
 % Vecteur residus adimensionne : 
 \newcommand{\vecResAd}{\ensuremath{\ve{\overline{r}}}\xspace}
 
 % Composantes vecteur residus adimensionne : 
-\newcommand{\vecResAdComp}{\ensuremath{\vecObsComp{\overline{r}}}\xspace}
+\newcommand{\vecResAdComp}{\ensuremath{\vecObsComp{\ve{\overline{r}}}}\xspace}
 
 
 %----------------------------------------------------------------------------------------
@@ -153,9 +159,13 @@
 
 \newcommand{\matJacobienChiSquare}{\ensuremath{\mat{J}_{\ChiSquare}}\xspace}
 
+\newcommand{\matJacobienResAd}{\ensuremath{\mat{J}_{\vecResAd}}\xspace}
+
 \newcommand{\vecGradientChiSquare}{\ensuremath{\ve{g}_{\ChiSquare}}\xspace}
 
 \newcommand{\matHessianChiSquare}{\ensuremath{\mat{H}_{\ChiSquare}}\xspace}
+
+\newcommand{\matHessianResAd}{\ensuremath{\mat{H}_{\vecResAd}}\xspace}
 
 %----------------------------------------------------------------------------------------
 %                               Identifiabilite :

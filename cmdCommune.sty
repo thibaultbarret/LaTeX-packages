@@ -1,7 +1,10 @@
 \NeedsTeXFormat{LaTeX2e}
 %\ProvidesPackage{cmdCommune}
+\RequirePackage[dvipsnames,svgnames,x11names, table]{xcolor}
+
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+
 
 \RequirePackage{fouriernc}
 \RequirePackage[
@@ -152,5 +155,15 @@
 
 % Indice msr :
 \newcommand{\msrInd}{\ensuremath{\Scale[0.65]{\mathrm{msr}}}\xspace}
+
+
+
+% Couleurs : 
+\definecolor{hlBlue}{RGB}{169,211,211}
+\definecolor{hlPink}{RGB}{255,165,177}
+
+% Norme : 
+\newcommand{\normTwo}[1]{\ensuremath{\left\lVert #1 \right\rVert^{2}}\xspace}   
+\newcommand{\normOne}[1]{\ensuremath{\left\lVert #1 \right\rVert}\xspace}   
 
 \endinput

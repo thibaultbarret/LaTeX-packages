@@ -64,3 +64,21 @@
     arrows = {-Triangle[width=4pt, length=9pt]},
     }
 }
+
+\tikzset{lsRadiusArrowInverted/.append style={
+        line cap = round, line width = .5, arrows = {Stealth[inset=0pt, angle=30:6pt]}-
+    }
+}
+
+\tikzset{lsRadiusArrow/.append style={
+        line cap = round, line width = .5, arrows = -{Stealth[inset=0pt, angle=30:6pt]}
+    }
+}
+
+\tikzset{lsDeplacementImpose/.append style = {line width =  2,
+        line cap = round,
+        red,
+        arrows = {-Stealth[inset=0pt, angle=40:15pt]},
+    }
+}
+

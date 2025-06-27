@@ -8,7 +8,7 @@
 \RequirePackage{siunitx}
 \sisetup{locale = FR}
 
-\DeclareSIUnit[mode=text]{\pixel}{Px}
+\DeclareSIUnit[mode=text]{\pixel}{px}
 \DeclareSIUnit\image{images}
 
 
@@ -23,18 +23,23 @@
 \newcommand{\utSec}{\unit{\bigl[\second\bigr]}}
 
 \newcommand{\utPx}{\unit{\bigl[\pixel\bigr]}}
+
 \newcommand{\utPxPx}{\unit{\bigl[\pixel^2\bigr]}}
 
 
 
-\newcommand{\qtMPa}[1]{\qty{#1}{\bigl[\mega\pascal\bigr]}}
+\newcommand{\qtMPa}[1]{\qty{#1}{\mega\pascal}}
 
 \newcommand{\qtSec}[1]{\qty{#1}{\second}}
 
-\newcommand{\qtMm}[1]{\qty{#1}{\bigl[\mili\meter\bigr]}}
+\newcommand{\qtMm}[1]{\qty{#1}{\milli\meter}}
 
-\newcommand{\qtKn}[1]{\qty{#1}{\bigl[\kilo\newton\bigr]}}
+\newcommand{\qtMmMm}[1]{\qty{#1}{\milli\meter^2}}
 
-\newcommand{\qtPx}[1]{\qty{#1}{\bigl[\pixel\bigr]}}
+\newcommand{\qtKn}[1]{\qty{#1}{\kilo\newton}}
+
+\newcommand{\qtPx}[1]{\qty{#1}{\pixel}}
+
+\newcommand{\qtPxPx}[1]{\qty{#1}{\pixel^2}}
 
 
