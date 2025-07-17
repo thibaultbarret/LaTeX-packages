@@ -26,8 +26,8 @@
 \newcommand{\thetaIndAd}[1]{\ensuremath{\overline{\theta}_{#1}}\xspace}
 \newcommand{\thetaIndNumb}[1]{\ensuremath{\theta_{\Scale[0.6]{#1}}}\xspace}
 
-\newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{n}, \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
-\newcommand{\jeuParametresCompExplPert}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaIndNumb{2}, \: ...,  \: \thetaInd{n} \times (1 + \epsilon), \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
+\newcommand{\jeuParametresCompExpl}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaInd{j}, \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
+\newcommand{\jeuParametresCompExplPert}{\ensuremath{\bigl\{ \thetaIndNumb{1}, \: \thetaIndNumb{2}, \: ...,  \: \thetaInd{j} \times (1 + \epsilon), \: ..., \thetaIndNumb{\nbParametres} \bigr\}}\xspace}
 
 
 
@@ -82,12 +82,19 @@
 % Point p 
 \newcommand{\pPoint}{\ensuremath{\mathscr{p}}\xspace}
 
+\newcommand{\NnbPpoint}{\ensuremath{N_{\!\pPoint}}\xspace}
+
 % Instant i 
 \newcommand{\iInstant}{\ensuremath{\mathscr{i}}\xspace}
 
-\newcommand{\NnbInstant}{\ensuremath{N_{\iInstant}}\xspace}
+\newcommand{\NnbInstant}{\ensuremath{N_{\!\iInstant}}\xspace}
 
 \newcommand{\nbPtVar}{\ensuremath{N_{\!\pPoint}^{\oVar}}\xspace}
+
+% Composante c : 
+\newcommand{\cComp}{\ensuremath{\mathscr{c}}\xspace}
+\newcommand{\NnbComp}{\ensuremath{N_{\cComp}}\xspace}
+
 
 %----------------------------------------------------------------------------------------
 %                                       Vecteur :
@@ -142,7 +149,8 @@
 
 \newcommand{\vecYnumAdCompTheta}{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\numInd} \bigl( \jeuParametres \bigr) \bigr\}}\xspace}
 
-\newcommand{\vecYnumCompVar}[1]{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\numInd} \bigl( #1 \bigr) \bigr\}}\xspace}
+\newcommand{\vecYnumCompVar}[1]{\ensuremath{\bigl\{ \ve{\mathscr{y}}_{\numInd} \bigl( #1 \bigr) \bigr\}}\xspace}
+\newcommand{\vecYnumAdCompVar}[1]{\ensuremath{\bigl\{ \ve{\overline{\mathscr{y}}}_{\numInd} \bigl( #1 \bigr) \bigr\}}\xspace}
 
 %\newcommand{\vecYnumCompTheta}{\ensuremath{y_{\numInd}}\xspace}
 
@@ -185,17 +193,26 @@
 
 \newcommand{\vecSensitivity}{\ensuremath{\ve{\overline{s}}}\xspace}
 
-\newcommand{\vecSensitivityVarOparamN}{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{n}}}\xspace}
-\newcommand{\vecSensitivityVarOparamJ}{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{j}}}\xspace}
+\newcommand{\vecSensitivityVarOparamN}{\ensuremath{\ve{s}_{\oVar|\thetaInd{n}}}\xspace}
+\newcommand{\vecSensitivityVarOparamJ}{\ensuremath{\ve{s}_{\oVar|\thetaInd{j}}}\xspace}
 
-\newcommand{\vecSensitivityVarOparam}[1]{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{#1}}}\xspace}
+\newcommand{\vecSensitivityAdVarOparamN}{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{n}}}\xspace}
+\newcommand{\vecSensitivityAdVarOparamJ}{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{j}}}\xspace}
+
+\newcommand{\vecSensitivityVarOparam}[1]{\ensuremath{\ve{s}_{\oVar|\thetaInd{#1}}}\xspace}
+\newcommand{\vecSensitivityAdVarOparam}[1]{\ensuremath{\ve{\overline{s}}_{\oVar|\thetaInd{#1}}}\xspace}
 
 \newcommand{\matGsensibility}{\ensuremath{\mat{\overline{G}}}\xspace}
 
 
 % Measure of sensitivity : 
 \newcommand{\deltaMeasure}{\ensuremath{\delta^{\msrInd}_{j}}\xspace}
+
+\newcommand{\deltaMeasureOvarThetaJ}{\ensuremath{\delta^{\oVar}_{\thetaInd{j}}}\xspace}
+
 \newcommand{\deltaMeasureThetaInd}[1]{\ensuremath{\delta^{\msrInd}_{\thetaInd{#1}}}\xspace}
+
+\newcommand{\deltaMeasureOvarThetaInd}[2]{\ensuremath{\delta^{#1}_{\thetaInd{#2}}}\xspace}
 
 \newcommand{\indiceIdent}{\ensuremath{\mathcal{I}}\xspace}
 

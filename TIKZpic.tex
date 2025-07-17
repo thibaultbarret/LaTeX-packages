@@ -31,4 +31,57 @@
             }
         \end{scope}
     },
+    picFolderRight/.pic={
+        \begin{scope}[yshift = -0.3cm]
+            \draw [rounded corners = 2pt, line width = 1, fill = Cyan4] (0, 0) --
+            (1, 0) -- 
+            (1, 0.7) --
+            (0.5, 0.7) -- 
+            (0.4, 0.85) -- 
+            (0, 0.85) --
+            cycle ; 
+
+            \draw [rounded corners = 2pt, line width = 1, fill = Cyan3] (0, -0.05) --
+            (0.15, 0.6) --
+            (1.2, 0.6) -- 
+            (1.05, -0.05) --
+            cycle ;
+        \end{scope}
+    },
+    picFolderLeft/.pic={
+        \begin{scope}[xshift = -1.2cm, yshift = -0.3cm]
+            \draw [rounded corners = 2pt, line width = 1, fill = Cyan4] (0, 0) --
+            (1, 0) -- 
+            (1, 0.7) --
+            (0.5, 0.7) -- 
+            (0.4, 0.85) -- 
+            (0, 0.85) --
+            cycle ; 
+
+            \draw [rounded corners = 2pt, line width = 1, fill = Cyan3] (0, -0.05) --
+            (0.15, 0.6) --
+            (1.2, 0.6) -- 
+            (1.05, -0.05) --
+            cycle ;
+        \end{scope}
+    },
+    picFile/.pic = {
+        \begin{scope}[xshift = 0.0cm, yshift = -0.5cm]
+            \draw [rounded corners = 1pt, line join = round, fill = Bisque1] (0, 0) --
+                                                                             (0.8, 0.) [sharp corners] --
+                                                                             (0.8, 0.7) --
+                                                                             (0.5, 1.) [rounded corners = 1pt] --
+                                                                             (0., 1.) -- 
+                                                                             cycle; 
+            %
+            \draw [fill = white, line join = round, fill = Bisque3] (0.8, 0.7) [rounded corners = 1pt] --
+                                                                    (0.5, 0.7)[sharp corners] --
+                                                                    (0.5, 1.) --
+                                                                     cycle ;
+
+            \foreach \y in {0.3,0.4,...,0.6}{
+                \draw [line cap = round] (0.2, \y) -- (0.6, \y) ; 
+            }
+        \end{scope} 
+}
 }
